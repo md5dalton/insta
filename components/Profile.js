@@ -4,7 +4,7 @@ import Icon from "./icon"
 
 export default ({ children, username, picture }) => {
     return (
-        <div className="profile flex items-center gap-x-4">
+        <div className="profile container flex items-center gap-x-4">
             <Image
                 className="rounded-full shrink-0"
                 src={picture}
