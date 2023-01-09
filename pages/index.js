@@ -9,6 +9,21 @@ const posts = [
       name: "Iggy Azalea",
       username: "iggyiz",
       picture: "/images/iggy/profile.jpg"
+    },
+    post: {
+      id: 1,
+      images: [
+        {
+          url: "/images/iggy/image-1.jpg",
+          width: 352,
+          height: 499
+        },
+        {
+          url: "/images/iggy/image-2.jpg",
+          width: 375,
+          height: 469
+        }
+      ]
     }
   }
 ]
@@ -22,7 +37,7 @@ export default function Home() {
       <List
         className="posts"
         items={posts}
-        itemHandler={(item, index) => <li key={item.id}><Post {...item} /></li> }
+        itemHandler={ item => <li key={item.id}><Post {...item} /></li> }
       />
     </Layout>
   )
