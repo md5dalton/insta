@@ -8,10 +8,9 @@ export default ({ children, title, description }) => (
             <meta name="description" content={description} />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
-            <link rel="stylesheet" type="text/css" href="/fonts/linearicons_coders/css/linearicons.css"></link>
         </Head>
         <Toolbar />
-        <main>
+        <main className="overflow-scroll">
             {children}
         </main>
     </>
