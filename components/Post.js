@@ -32,8 +32,6 @@ export default ({ owner, post }) => {
         src: image
     }))
 
-    console.log(images)
-
     return (
         <div className="post">
             <Profile {...owner} ></Profile>
