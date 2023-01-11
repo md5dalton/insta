@@ -24,15 +24,20 @@ export default ({ images }) => {
                 itemHandler={({ url, width, height }, index) => (
                     <li key={index} className="post-image grid justify-center shrink-0 w-full snap-start snap-always">
                         <Image
+                            alt=""
                             className="row-span-full col-span-full"
                             src={url}
                             width={width}
                             height={height}
-                            // fill
+                            style={{
+                                height: "100%",
+                                // width: "100%",
+                                objectFit: "cover"
+                            }}
                         />
                         <div className="overlay row-span-full col-span-full bg-[#00000087] flex flex-col">
                             <div className="controls grow"></div>
-                            <Indicators items={images} current={index} />
+                            {/* <Indicators items={images} current={index} /> */}
                         </div>
                     </li>
                 )}
