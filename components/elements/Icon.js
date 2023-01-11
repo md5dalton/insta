@@ -1,0 +1,1 @@
+export default ({ name }) => <div className={`icon text-2xl linearicons-${name}`}></div>
