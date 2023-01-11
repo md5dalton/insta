@@ -1,12 +1,12 @@
 import Image from "next/image"
-import { ReactImageCarouselViewer } from "react-image-carousel-viewer"
-import ButtonIcon from "./ButtonIcon"
+import ButtonIcon from "./elements/ButtonIcon"
 import ContextMenu from "./ContextMenu"
 import ImageViewer from "./ImageViewer"
+import List from "./List"
 
 const Profile = ({ children, username, picture }) => {
     return (
-        <div className="profile container flex items-center gap-x-4 py-2">
+        <div className="profile flex items-center gap-x-4 py-2">
             <Image
                 className="rounded-full shrink-0"
                 src={picture}
@@ -26,23 +26,35 @@ const Profile = ({ children, username, picture }) => {
     )
 }
 
-export default ({ owner, post }) => {
-
-    const images = post.images.map(image => ({
-        src: image
-    }))
+export default ({ owner, caption, images, tags, timestamp }) => {
 
     return (
         <div className="post">
-            <Profile {...owner} ></Profile>
-            <div className="images">
-                <ImageViewer images={post.images} />
+            <div className="container">
+                <Profile {...owner} ></Profile>
             </div>
-            <div className="container icon-buttons grid grid-cols-4">
-                <ButtonIcon name="heart" />
-                <ButtonIcon name="enter-down" />
-                <ButtonIcon name="lock" />
-                <ButtonIcon name="bookmark2" className="justify-self-end" />
+            <div className="images">
+                <ImageViewer images={images} />
+            </div>
+            <div className="container mt-2 grid gap-y-2">
+                <div className="icon-buttons flex gap-x-5">
+                    <div><ButtonIcon name="heart" /></div>
+                    <div><ButtonIcon name="enter-down" /></div>
+                    <div><ButtonIcon name="lock" /></div>
+                    <div className="grow grid justify-end"><ButtonIcon name="bookmark2" /></div>
+                </div>
+                {   caption &&
+                    <div className="caption flex gap-2">
+                        <span className="username">{owner.name}</span>
+                        <p className="caption-text">{caption}</p>
+                    </div>
+                }
+                <List
+                    className="flex gap-x-2"
+                    items={tags}
+                    itemHandler={({ id, name }) => <li key={id}>#{name}</li>}
+                />
+                <div>{timestamp}</div>
             </div>
             
         </div>
