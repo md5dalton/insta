@@ -1,5 +1,5 @@
 import Nav from "../Nav"
-import ButtonIcon from "./elements/ButtonIcon"
+import ButtonIcon from "../elements/ButtonIcon"
 
 export default () => (
     <header>

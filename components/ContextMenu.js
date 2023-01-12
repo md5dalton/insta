@@ -1,4 +1,4 @@
-import ButtonIcon from "./ButtonIcon"
+import ButtonIcon from "./elements/ButtonIcon"
 
 export default ({ children }) => (
     <div className="context-menu">
