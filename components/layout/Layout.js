@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Toolbar from "./Toolbar"
+import Header from "./Header"
 
 export default ({ children, title, description }) => (
     <>
@@ -7,10 +7,10 @@ export default ({ children, title, description }) => (
             <title>{title}</title>
             <meta name="description" content={description} />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/favicon.ico" />
+            {/* <link rel="icon" type="image/png" href="/images/favicon.png" /> */}
         </Head>
-        <Toolbar />
-        <main className="overflow-scroll">
+        <Header />
+        <main>
             {children}
         </main>
     </>
