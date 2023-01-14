@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="stylesheet" type="text/css" href="/fonts/linearicons_coders/css/linearicons.css" />
       </Head>
-      <body className="overflow-scroll">
+      <body>
         <Main />
         <NextScript />
       </body>
