@@ -27,7 +27,7 @@ export default () => {
             title="Instakram"
             description="Instagram clone app using Nextjs and tailwindcss"
         >
-            <section onClick={loadmoreHandler} className="posts pt-4 pb-8">
+            <section className="posts pt-4 pb-8">
                 { posts.length ? <>
                     <List className="grid gap-4" items={posts} empty={empty} itemHandler={itemHandler} />
                     <Waypoint 
