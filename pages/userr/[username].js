@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import ContextMenu from "../../components/ContextMenu"
 import DynamicContent from "../../components/DynamicContent"
+import TabLink from "../../components/elements/TabLink"
 import Layout from "../../components/layout/Layout"
 import useUser from "../../hooks/useUser"
 
@@ -51,7 +52,9 @@ export default () => {
             <div className="stories"></div>
             <div className="stats-tabs">
                 <div className="stats"></div>
-                <div className="tabs"></div>
+                <div className="tabs">
+                    <TabLink href="feed" icon="user" />
+                </div>
             </div>
             <div className="media-lists"></div>
         </Layout>

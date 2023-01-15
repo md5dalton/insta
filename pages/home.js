@@ -14,11 +14,7 @@ export default () => {
 
     const loadmoreHandler = () => !end && !isLoading ? loadmore() : 0
 
-    const itemHandler = (item, index) => (
-        <li key={index}>
-            <Post {...item} />
-        </li> 
-    )
+    const itemHandler = (item, index) => <li key={index}><Post {...item} /></li> 
 
     const empty = <div className="container grid justify-center">no posts were found</div>
 

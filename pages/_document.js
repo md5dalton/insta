@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="stylesheet" type="text/css" href="/fonts/linearicons_coders/css/linearicons.css" />
+        {/* <link rel="stylesheet" type="text/css" href="/fonts/linearicons_coders/css/linearicons.css" /> */}
       </Head>
       <body>
         <Main />

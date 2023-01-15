@@ -1,3 +1,7 @@
+import Posts from "./Posts"
+
 export default () => (
-    <p>home</p>
+    <section className="posts pt-4 pb-8">
+        <Posts />
+    </section>
 )
