@@ -19,7 +19,7 @@ export default ({ path }) => {
     const empty = <div className="container grid justify-center">no posts were found</div>
     
     return (
-        <>
+        <div className="media-list pt-4 pb-8">
             { posts.length ? <>
                 <List className="grid gap-4" items={posts} empty={empty} itemHandler={itemHandler} />
                 <Waypoint 
@@ -30,6 +30,6 @@ export default ({ path }) => {
             { error && <div>error</div> }
             { isLoading && <div>loading</div> }
             { end && <div>end reached</div> }
-        </>
+        </div>
     )
 }

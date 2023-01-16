@@ -1,4 +1,4 @@
-import { shuffle } from "../../../utils/functions"
+import { shuffle } from "../../../../../utils/functions"
 
 const owner = {
   name: "Iggy Azalea",

@@ -1,7 +1,7 @@
-import MediaList from "../../MediaList"
+import MediaList from "../../../MediaList"
 
 export default ({ params: { username } }) => (
-    <div className="default-media-list">
+    <div className="feed">
         <MediaList path={`/user/${username}/posts`} />
     </div>
 )

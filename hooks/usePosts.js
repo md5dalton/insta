@@ -4,9 +4,9 @@ import useSWRInfinite from "swr/infinite"
 
 const PAGE_SIZE = 3
 
-export default () => {
+export default (path) => {
     
-    const url = API + "/posts/"
+    const url = `${API}${path}/`
     
     const { 
         data, error, mutate, size, 
