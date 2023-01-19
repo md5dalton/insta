@@ -1,7 +1,7 @@
-import Posts from "../Posts"
+import Videos from "./Videos"
 
 export default ({ params: { username } }) => (
     <div className="tags">
-        <Posts path={`/user/${username}/tags`} />
+        <Videos path={`/user/${username}/videos`} />
     </div>
 )

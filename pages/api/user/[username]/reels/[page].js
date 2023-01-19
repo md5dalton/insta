@@ -14,9 +14,7 @@ export default function handler(req, res) {
     id: `page${page}:item${i}`,
     thumb: shuffle(images).pop(),
     stats: {
-      images: 4,
-      comments: "4k",
-      likes: "107k"
+      views: "107k"
     }
   }))
 

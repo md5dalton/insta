@@ -35,7 +35,7 @@ export default ({ images }) => {
                                 objectFit: "cover"
                             }}
                         />
-                        <div className="overlay row-span-full col-span-full bg-[#00000087] flex flex-col">
+                        <div className="overlay row-span-full col-span-full flex flex-col">
                             <div className="controls grow"></div>
                             {/* <Indicators items={images} current={index} /> */}
                         </div>

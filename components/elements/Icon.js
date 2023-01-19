@@ -1,1 +1,3 @@
-export default ({ name }) => <div className={`icon text-2xl linearicons-${name}`}></div>
+export default ({ name, size }) => (
+    <div className={`icon linearicons-${name} ${size || "text-2xl"}`}></div>
+)

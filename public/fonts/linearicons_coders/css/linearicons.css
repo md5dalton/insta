@@ -23,9 +23,9 @@
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'Linearicons' !important;
   speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
+  font-style: inherit;
+  font-weight: inherit;
+  font-variant: inherit;
   text-transform: none;
   line-height: 1;
 

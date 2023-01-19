@@ -41,7 +41,7 @@ const tags = [t1, t2]
 export default function handler(req, res) {
   const { page } = req.query
 
-  const posts = [1,2,3,4,5,6,7,8,9,0].map(i => ({
+  const media = [1,2,3,4,5,6,7,8,9,0].map(i => ({
     id: `page${page}:item${i}`,
     owner,
     images: shuffle(images), //.sort((a, b) => 0.5 - Math.random()),
@@ -50,7 +50,7 @@ export default function handler(req, res) {
   }))
 
   res.status(200).json({
-    posts,
+    media,
     page,
     end: false
   })

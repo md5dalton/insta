@@ -11,8 +11,8 @@ export default ({ owner, caption, images, tags, timestamp }) => (
         <div className="images">
             <ImageViewer images={images} />
         </div>
-        <div className="container mt-2 grid gap-y-2">
-            <div className="icon-buttons flex gap-x-5">
+        <div className="container grid gap-y-2">
+            <div className="icon-buttons flex gap-x-5 mt-4">
                 <div><ButtonIcon name="heart" /></div>
                 <div><ButtonIcon name="enter-down" /></div>
                 <div><ButtonIcon name="lock" /></div>
@@ -25,11 +25,11 @@ export default ({ owner, caption, images, tags, timestamp }) => (
                 </div>
             }
             <List
-                className="flex gap-x-2"
+                className="flex gap-x-2 mt-2"
                 items={tags}
-                itemHandler={({ id, name }) => <li key={id}>#{name}</li>}
+                itemHandler={({ id, name }) => <li key={id} className="text-blue-500">#{name}</li>}
             />
-            <div>{timestamp}</div>
+            <div className="text-xs text-gray-500">{timestamp}</div>
         </div>
         
     </div>

@@ -1,7 +1,7 @@
-import Posts from "./Posts"
+import Feed from "./Feed"
 
 export default () => (
-    <section className="posts pt-4 pb-8">
-        <Posts path="/posts" />
-    </section>
+    <div className="home-feed pt-4">
+        <Feed path="/feed" />
+    </div>
 )

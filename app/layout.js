@@ -4,9 +4,9 @@ import "../public/fonts/linearicons_coders/css/linearicons.css"
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html style={{background: "black"}}>
       <head />
-      <body>
+      <body className="text-white text-sm">
         <Header />
         {children}
       </body>

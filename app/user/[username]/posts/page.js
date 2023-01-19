@@ -1,7 +1,7 @@
-import Posts from "./Posts"
+import Posts from "../Posts"
 
 export default ({ params: { username } }) => (
-    <div className="default-user-media-list">
+    <div className="feed">
         <Posts path={`/user/${username}/posts`} />
     </div>
 )

@@ -1,4 +1,6 @@
-import TabLink from "../../../components/elements/TabLink"
+import Stats from "./Stats"
+import Story from "./Story"
+import TabLinks from "./TabLinks"
 import UserInfo from "./userInfo"
 
 export default function ({ children, params: {username} }) {
@@ -8,17 +10,28 @@ export default function ({ children, params: {username} }) {
      return (
         <div className="user">
             <UserInfo />
-            <div className="stories">stories</div>
+            <div className="stories flex w-full py-5 overflow-x-auto">
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+                <Story />
+            </div>
             <div className="stats-tabs">
-                <div className="stats">stats</div>
-                <div className="
-                    grid grid-cols-3
-                    border-y-gray-500 border-y-2"
-                >
-                    <TabLink href={`${url}feed`} icon="user" />
-                    <TabLink href={`${url}reels`} icon="play-circle" />
-                    <TabLink href={`${url}tags`} icon="user" />
-                </div>
+                <Stats />
+                <TabLinks url={url} />
             </div>
             <div className="media">{children}</div>
         </div>
