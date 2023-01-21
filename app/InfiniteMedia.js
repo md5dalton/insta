@@ -16,18 +16,19 @@ export default ({ path, bottomOffset, listClassName, mediaHandler }) => {
     const empty = <div className="container grid justify-center">no posts were found</div>
     
     return (
-        <div className="pb-8">
+        <div className="infinite-media">
             { media.length ? <>
                 <UList
                     className={listClassName}
                     items={media}
                     empty={empty}
                     itemHandler={mediaHandler}
-                />
-                <Waypoint 
-                    onEnter={loadmoreHandler}
-                    bottomOffset={bottomOffset}
+                >
+                    <Waypoint 
+                        onEnter={loadmoreHandler}
+                        bottomOffset={bottomOffset}
                     />
+                </UList>
             </> : "" }
             { error && <div>error</div> }
             { isLoading && <div>loading</div> }
