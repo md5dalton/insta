@@ -1,4 +1,4 @@
-export default ({ items, itemHandler, empty, ...props }) => (
+export default ({ children, items, itemHandler, empty, ...props }) => (
     <ul {...props} role="list">
         {
             !items.length ? empty :
@@ -6,5 +6,6 @@ export default ({ items, itemHandler, empty, ...props }) => (
                 <li key={index}>{itemHandler(item)}</li>
             ))
         }
+        {children}
     </ul>
 )

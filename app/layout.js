@@ -7,7 +7,7 @@ export default function RootLayout({ children }) {
     <html style={{background: "black"}}>
       <head />
       <body className="text-white text-sm">
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
