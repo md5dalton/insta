@@ -9,7 +9,7 @@ export default (path) => {
     const { 
         data, error, mutate, size, 
         setSize, isValidating 
-    } = useSWRInfinite(index => url + index, fetcher)
+    } = useSWRInfinite(index => url + index, fetcher, { revalidateAll: false, revalidateFirstPage: false })
     
     const { end } = data ? data[0] : {} 
     const isLoadingInitialData = !data && !error
