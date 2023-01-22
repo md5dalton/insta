@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
-import ContextMenu from "./ContextMenu"
+import Button from "../../../components/elements/Button"
+import Icon from "../../../components/elements/Icon"
 
-export default ({ children, username, name, picture, size = 40 }) => (
-    <div className="profile flex items-center gap-x-4 py-4">
+export default ({ username, name, picture, size = 40 }) => (
+    <div className="profile flex items-center gap-x-4 py-2">
         <Link href={`/user/${username}`}>
             <Image
                 className="rounded-full shrink-0"
@@ -18,8 +19,9 @@ export default ({ children, username, name, picture, size = 40 }) => (
             <div className="name flex items-center gap-x-4">
                 <Link href={`/user/${username}`} className="username font-semibold">{name}</Link>
             </div>
-            {children && <div className="other">{children}</div>}
         </div>
-        <ContextMenu></ContextMenu>
+        <Button>
+            <Icon name="cross2" size="text-xs font-bold" />
+        </Button>
     </div>
 )

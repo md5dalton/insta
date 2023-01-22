@@ -1,5 +1,11 @@
 import { shuffle } from "../../../../../utils/functions"
 
+const owner = {
+  name: "Iggy Azalea",
+  username: "iggyiz",
+  picture: "/images/iggy/profile.jpg"
+}
+
 const images = [
   "/images/iggy/image-4.jpg",
   "/images/iggy/image-1.jpg",
@@ -15,7 +21,8 @@ export default function handler(req, res) {
     thumb: shuffle(images).pop(),
     stats: {
       views: "107k"
-    }
+    },
+    owner: owner
   }))
 
   res.status(200).json({

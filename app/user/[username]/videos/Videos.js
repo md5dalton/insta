@@ -1,5 +1,5 @@
 "use client"
-import InfiniteMedia from "../../../InfiniteMedia"
+import InfiniteList from "../../../InfiniteList"
 import VideoTile from "./VideoTile"
 
 export default ({ path }) => {
@@ -7,10 +7,10 @@ export default ({ path }) => {
     const mediaHandler = media => <VideoTile {...media} /> 
 
     return (
-        <InfiniteMedia
+        <InfiniteList
             path={path}
-            listClassName="grid grid-cols-3 gap-[3px]"
-            bottomOffset="-300px"
+            className="grid grid-cols-3 gap-[3px]"
+            threshold={600}
             mediaHandler={mediaHandler}
         />
     )

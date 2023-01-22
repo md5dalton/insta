@@ -10,7 +10,7 @@ export default ({ path }) => {
         <InfiniteMedia
             path={path}
             listClassName="h-screen overflow-y-scroll snap-y snap-mandatory"
-            bottomOffset="-600px"
+            bottomOffset="-10px"
             mediaHandler={mediaHandler}
         />
     )

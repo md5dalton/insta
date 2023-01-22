@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import Icon from "../../../components/elements/Icon"
+import Icon from "../components/elements/Icon"
 
 const TileStat = ({ name, value }) => (
     <div className="flex gap-1 justify-center items-center font-bold ">

@@ -1,16 +1,16 @@
 "use client"
-import InfiniteMedia from "../../../InfiniteMedia"
-import ReelTile from "./ReelTile"
+import InfiniteList from "../../../InfiniteList"
+import ReelTile from "../../../ReelTile"
 
 export default ({ path }) => {
 
     const mediaHandler = media => <ReelTile {...media} /> 
 
     return (
-        <InfiniteMedia
+        <InfiniteList
             path={path}
-            listClassName="grid grid-cols-3 gap-[3px]"
-            bottomOffset="-300px"
+            className="grid grid-cols-3 gap-[3px]"
+            threshold={600}
             mediaHandler={mediaHandler}
         />
     )

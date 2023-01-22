@@ -1,16 +1,16 @@
 "use client"
-import InfiniteMedia from "../../InfiniteMedia"
-import PostTile from "./PostTile"
+import InfiniteList from "../../InfiniteList"
+import PostTile from "../../PostTile"
 
 export default ({ path }) => {
 
     const mediaHandler = media => <PostTile {...media} /> 
 
     return (
-        <InfiniteMedia
+        <InfiniteList
             path={path}
-            listClassName="grid grid-cols-3 gap-[3px]"
-            bottomOffset="-300px"
+            className="grid grid-cols-3 gap-[3px]"
+            threshold={300}
             mediaHandler={mediaHandler}
         />
     )
