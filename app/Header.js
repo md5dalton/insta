@@ -1,11 +1,10 @@
+import Link from "next/link"
 import ButtonIcon from "../components/elements/ButtonIcon"
-import Nav from "../components/Nav"
 
 export default () => (
-    <header className="container bg-primary text-slate-400 py-4 flex items-center gap-x-4">
-        <ButtonIcon name="menu" />
-        <Nav />
-        <ButtonIcon name="moon" className="hidden sm:grid" />
-        <ButtonIcon name="magnifier" />
+    <header className="container bg-black flex items-center">
+        <ButtonIcon className="py-3" name="focus" />
+        <Link className="grow text-center font-bold tracking-wider" href="/">LETLAPA</Link>
+        <ButtonIcon className="py-3" name="paper-plane" />
     </header>
 )
