@@ -1,10 +1,13 @@
 "use client"
+import { useState } from "react"
 import InfiniteMedia from "../../InfiniteMedia"
 import Reel from "./Reel"
 
 export default ({ path }) => {
 
-    const mediaHandler = media => <Reel {...media} /> 
+    const [ muted, setMuted ] = useState(false)
+
+    const mediaHandler = media => <Reel muted={muted} setMuted={setMuted} {...media} /> 
 
     return (
         <InfiniteMedia
