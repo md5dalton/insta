@@ -20,7 +20,7 @@ export default ({ mediaHandler, path, ...props }) => {
         >
             {
                 media.map((item, index) => (
-                    <li key={index}>{mediaHandler(item)}</li>
+                    <li key={index} className="shrink-0">{mediaHandler(item)}</li>
                     ))
             }
         </InfiniteScroll>

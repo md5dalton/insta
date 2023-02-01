@@ -4,7 +4,7 @@ import { Waypoint } from "react-waypoint"
 import useMedia from "../hooks/useMedia"
 import UList from "./UList"
 
-export default ({ path, bottomOffset, listClassName, mediaHandler }) => {
+export default ({ path, bottomOffset, listClassName, listProps, mediaHandler }) => {
 
     const { 
         media, error, isLoading, end,
@@ -23,6 +23,7 @@ export default ({ path, bottomOffset, listClassName, mediaHandler }) => {
                     items={media}
                     empty={empty}
                     itemHandler={mediaHandler}
+                    {...listProps}
                 >
                     <Waypoint 
                         onEnter={loadmoreHandler}

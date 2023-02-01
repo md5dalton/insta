@@ -1,10 +1,16 @@
 import Link from "next/link"
-import ButtonIcon from "../components/elements/ButtonIcon"
+import Icon from "../components/elements/Icon"
+
+const LinkIcon = ({ href, icon }) => (
+    <Link href={href} className="pt-3 pb-4 grid place-items-center">
+        <Icon name={icon} />
+    </Link> 
+)
 
 export default () => (
-    <header className="container bg-black flex items-center">
-        <ButtonIcon className="py-3" name="focus" />
+    <header className="sticky top-0 z-50 container bg-black flex items-center">
+        <LinkIcon icon="focus" href="/create" />
         <Link className="grow text-center font-bold tracking-wider" href="/">LETLAPA</Link>
-        <ButtonIcon className="py-3" name="paper-plane" />
+        <LinkIcon icon="paper-plane" href="/share" />
     </header>
 )

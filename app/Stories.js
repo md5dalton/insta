@@ -1,14 +1,14 @@
 "use client"
-import Post from "../components/Post/Post"
 import InfiniteList from "./InfiniteList"
+import Story from "./Story"
 
 export default ({ path }) => {
 
-    const mediaHandler = media => <Post {...media} /> 
+    const mediaHandler = media => <Story {...media} /> 
 
     return (
         <InfiniteList
-            className="grid gap-8"
+            className="flex gap-x-2 w-full px-4 overflow-x-scroll"
             path={path}
             threshold={1000}
             mediaHandler={mediaHandler}

@@ -1,4 +1,11 @@
-import ButtonIcon from "../components/elements/ButtonIcon"
+import Link from "next/link"
+import Icon from "../components/elements/Icon"
+
+const LinkIcon = ({ href, icon }) => (
+    <Link href={href} className="pt-3 pb-4 grid place-items-center">
+        <Icon name={icon} />
+    </Link> 
+)
 
 export default () => (
     <footer className="
@@ -8,13 +15,14 @@ export default () => (
         grid-cols-5
         fixed
         bottom-0
+        h-14
         bg-black
         font-bold"
     >
-        <ButtonIcon className="pt-3 p-4" name="home2" />
-        <ButtonIcon className="pt-3 p-4" name="magnifier" />
-        <ButtonIcon className="pt-3 p-4" name="clapboard-play" />
-        <ButtonIcon className="pt-3 p-4" name="heart" />
-        <ButtonIcon className="pt-3 p-4" name="user" />
+        <LinkIcon href="/" icon="home2" />
+        <LinkIcon href="/explore" icon="magnifier" />
+        <LinkIcon href="/reel" icon="clapboard-play" />
+        <LinkIcon href="/activity" icon="heart" />
+        <LinkIcon href="/user/current" icon="user" />
     </footer>
 )

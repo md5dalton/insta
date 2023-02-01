@@ -5,14 +5,18 @@ import Reel from "./Reel"
 
 export default ({ path }) => {
 
+    const height = `calc(100vh - 56px)`
+
     const [ muted, setMuted ] = useState(false)
 
-    const mediaHandler = media => <Reel muted={muted} setMuted={setMuted} {...media} /> 
+    const mediaHandler = media => <Reel height={height} muted={muted} setMuted={setMuted} {...media} /> 
+
 
     return (
         <InfiniteMedia
+            listProps={{style: {height}}}
             path={path}
-            listClassName="h-screen overflow-y-scroll snap-y snap-mandatory"
+            listClassName="overflow-y-scroll snap-y snap-mandatory"
             bottomOffset="-10px"
             mediaHandler={mediaHandler}
         />

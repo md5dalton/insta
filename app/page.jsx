@@ -1,12 +1,13 @@
 import Feed from "./Feed"
 import Header from "./Header"
+import Stories from "./Stories"
 
 export default () => (
     <div className="home">
         <Header />
-        <div>stories</div>
-        <div className="home-feed pt-4">
-            {/* <Feed path="/feed" /> */}
+        <div className="py-3 line-b">
+            <Stories path="/stories" />
         </div>
+        <Feed path="/feed" />
     </div>
 )
