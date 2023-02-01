@@ -31,5 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# test videos
+# test media
+/public/images/iggy
 /public/videos
