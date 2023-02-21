@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import Profile from "../../../components/Profile"
 import UList from "../../../components/UList"
@@ -17,7 +18,7 @@ export default async () => {
     return (
         <div className="container user-info">
             <div className="profile-wrapper">
-                <Profile {...user} size={77} />
+                <Profile {...user} isLink={false} size="L" />
             </div>
             <div className="grid gap-[2px]">
                 <p className="font-bold">{name}</p>

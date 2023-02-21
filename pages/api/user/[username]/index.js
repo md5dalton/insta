@@ -1,12 +1,13 @@
+import { shuffle } from "../../../../utils/functions"
+
 export default function handler(req, res) {
     
     const { username } = req.query
-  
     
     const user = {
         name: "Iggy Azalea",
-        hasNew: true,
-        username: "iggyiz",
+        hasNew: shuffle([false, true]).pop(),
+        username: username,
         picture: "/images/iggy/profile.jpg",
         category: "Personality",
         description: "This is my official Letlapa account. Follow me and keep up to date of what I am up to.",

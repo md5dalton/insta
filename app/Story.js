@@ -1,15 +1,14 @@
 import ProfilePhoto from "../components/elements/ProfilePhoto"
 
-export default ({ id, name, thumb, hasNew, size=64 }) => (
+export default ({ id, name, thumb, hasNew }) => (
     <div>
         <ProfilePhoto
             url={`/story/${id}`}
             src={thumb}
             alt=""
-            width={size}
-            height={size}
+            size="M"
             hasNew={hasNew}
         />
-        <p style={{width: size}} className="text-xs pt-1 truncate">{name}</p>
+        <p style={{width: 56}} className="text-xs pt-1 truncate">{name}</p>
     </div>
 )

@@ -14,7 +14,7 @@ export default function handler(req, res) {
     id: `page${page}:item${i}`,
     thumb: shuffle(images).pop(),
     name: `item ${i} of page ${page}`,
-    hasNew: true
+    hasNew: shuffle([false, true]).pop()
   }))
 
   res.status(200).json({

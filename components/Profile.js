@@ -2,14 +2,13 @@ import Link from "next/link"
 import ContextMenu from "./ContextMenu"
 import ProfilePhoto from "./elements/ProfilePhoto"
 
-export default ({ children, username, name, picture, size = 40 }) => (
+export default ({ children, username, name, picture, size = "S", isLink = true }) => (
     <div className="profile flex items-center gap-x-4 py-4">
         <ProfilePhoto
-            url={`/user/${username}`}
+            url={isLink ? `/user/${username}` : ""}
             src={picture}
             alt={username}
-            width={size}
-            height={size}
+            size={size}
         />
         <div className="details grid gap-4 grow">
             <div className="name flex items-center gap-x-4">

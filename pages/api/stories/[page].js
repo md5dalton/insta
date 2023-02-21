@@ -13,7 +13,8 @@ export default function handler(req, res) {
   const media = [1,2,3,4,5,6,7,8,9,0].map(i => ({
     id: `page${page}:item${i}`,
     thumb: shuffle(images).pop(),
-    name: `page${page}:item${i}`
+    name: `page${page}:item${i}`,
+    hasNew: shuffle([false, true]).pop()
   }))
 
   res.status(200).json({
