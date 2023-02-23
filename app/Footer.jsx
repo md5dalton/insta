@@ -1,10 +1,10 @@
-import Link from "next/link"
 import Icon from "../components/elements/Icon"
+import NavLink from "../components/elements/NavLink"
 
 const LinkIcon = ({ href, icon }) => (
-    <Link href={href} className="pt-3 pb-4 grid place-items-center">
+    <NavLink href={href} className="pt-3 pb-4 grid place-items-center">
         <Icon name={icon} />
-    </Link> 
+    </NavLink> 
 )
 
 export default () => (
