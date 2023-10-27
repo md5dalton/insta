@@ -39,6 +39,7 @@ yarn-error.log*
 
 
 
+/prisma/migrations
 
 yarn-error.log
 dist
