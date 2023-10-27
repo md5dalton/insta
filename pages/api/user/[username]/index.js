@@ -5,7 +5,7 @@ export default function handler(req, res) {
     const { username } = req.query
     
     const user = {
-        name: "Iggy Azalea",
+        name: "Mpho Mothae",
         hasNew: shuffle([false, true]).pop(),
         username: username,
         picture: "/images/iggy/profile.jpg",
