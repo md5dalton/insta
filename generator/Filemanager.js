@@ -1,7 +1,7 @@
 import fs from "fs/promises"
 import sharp from "sharp"
 import { find } from "./finder.js"
-import { encode, group } from "./utils.js"
+import { connect, encode, group } from "./utils.js"
 import SuperCollection from "./SuperCollection.js"
 
 export default class Filemanager
@@ -66,16 +66,10 @@ export default class Filemanager
             
             collections.forEach(({ users, path: collectionPath }) => {
 
-                const id = encode(collectionPath)
-
                 const collection = {
-                    id: id,
+                    id: encode(collectionPath),
                     path: collectionPath.replace(superCollectionPath, ""),
-                    owner: {
-                        connect: {
-                            id: id
-                        }
-                    }
+                    owner: connect(superCollection)
                 }
 
                 this.collections.push(collection)
