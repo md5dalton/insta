@@ -1,41 +1,5 @@
-import { PrismaClient } from "@prisma/client"
-import Filemanager from "./Filemanager.js"
+import DBManager from "./DBManager.js"
 
-const manager = new Filemanager("a:/media/images", ["jpg", "jpeg", "png", "webp"])
+const manager = new DBManager("a:/media/images", ["jpg", "jpeg", "png", "webp"])
 
-await manager.createSuperCollections()
-
-manager.createModels()
-
-const prisma = new PrismaClient()
-
-const main = async () => {
-    // const rootCollections = await prisma.rootCollection.findMany({
-    //     select: {
-    //         id: true
-    //     },
-    // })
-    // const roots = await prisma.rootCollection.createMany({
-    //     data: manager.rootCollections,
-    // })
-    const cols = await prisma.collection.createMany({
-        data: manager.collections.slice(0,5),
-    })
-    // const rootCollection = await prisma.rootCollection.create({
-    //     data: {
-    //         id: rc.id,
-    //         path: rc.path
-    //     }
-    // })
-
-    console.log(cols)
-
-}
-
-main()
-    .then(async () => await prisma.$disconnect())
-    .catch(async e => {
-        console.log(e)
-        await prisma.$disconnect()
-        process.exit(1)
-    })
+manager.create()
