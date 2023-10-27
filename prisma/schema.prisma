@@ -26,9 +26,28 @@ model Collection {
 
 model User {
     id String @id
-    name String
+    path String
     picture String
-    category String
     owner Collection @relation(fields: [ownerId], references: [id])
+    ownerId String
+    posts Post[]
+}
+
+model Post {
+    id String @id
+    path String
+    picture String
+    owner User @relation(fields: [ownerId], references: [id])
+    ownerId String
+    media Media[]
+}
+model Media {
+    id String @id
+    path String
+    height Int
+    width Int
+    mktime DateTime
+    portrait Boolean
+    owner Post @relation(fields: [ownerId], references: [id])
     ownerId String
 }
