@@ -7,8 +7,6 @@ await manager.createSuperCollections()
 
 manager.createModels()
 
-const rc = manager.rootCollections.pop()
-
 const prisma = new PrismaClient()
 
 const main = async () => {
@@ -16,6 +14,9 @@ const main = async () => {
     //     select: {
     //         id: true
     //     },
+    // })
+    // const roots = await prisma.rootCollection.createMany({
+    //     data: manager.rootCollections,
     // })
     const cols = await prisma.collection.createMany({
         data: manager.collections.slice(0,5),
