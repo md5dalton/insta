@@ -16,7 +16,7 @@ export default class Filemanager
     collections = []
     users = []
     posts = []
-    media = []
+    medias = []
     
     constructor (path, ext) {
         this.path = path
@@ -69,7 +69,7 @@ export default class Filemanager
                 const collection = {
                     id: encode(collectionPath),
                     path: collectionPath.replace(superCollectionPath, ""),
-                    owner: connect(superCollection)
+                    ownerId: superCollection.id
                 }
 
                 this.collections.push(collection)
@@ -79,7 +79,7 @@ export default class Filemanager
                     const user = {
                         id: encode(userPath),
                         path: userPath.replace(collectionPath, ""),
-                        owner: collection
+                        ownerId: collection.id
                     }
 
                     this.users.push(user)
@@ -89,7 +89,7 @@ export default class Filemanager
                         const post = {
                             id: encode(postPath),
                             path: postPath.replace(userPath, ""),
-                            owner: user
+                            ownerId: user.id
                         }
 
                         this.posts.push(post)
@@ -99,15 +99,15 @@ export default class Filemanager
                             const media = {
                                 id: encode(mediaPath),
                                 path: mediaPath.replace(postPath.split("<").shift(), ""),
-                                owner: post,
+                                ownerId: post.id,
                                 ...rest
                             }
     
-                            this.media.push(media)
+                            this.medias.push(media)
     
                         })
 
-                        post.picture = this.media[0].id
+                        post.picture = this.medias[0].id
 
                     })
 
