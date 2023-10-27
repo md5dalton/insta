@@ -42,3 +42,9 @@ export const encode = str => {
     return base64Hash.replace(/[^a-zA-Z0-9]/g, "").substring(0, 8)
 
 }
+
+export const connect = ({ id }) => ({
+    connect: {
+        id: id
+    }
+})
