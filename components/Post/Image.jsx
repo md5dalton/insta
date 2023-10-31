@@ -1,11 +1,11 @@
 import Image from "next/image"
 
-export default ({ url, width, height }) => (
+export default ({ id, width, height }) => (
    <>
         <Image
             alt=""
             className="row-span-full col-span-full"
-            src={url}
+            src={`/api/media/${id}`}
             width={width}
             height={height}
             // style={{
