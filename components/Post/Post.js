@@ -3,10 +3,10 @@ import Profile from "../Profile"
 import UList from "../UList"
 import MediaCarousel from "./MediaCarousel"
 
-export default ({ owner, caption, media, tags, timestamp }) => (
+export default ({ owner: { path, ...rest }, caption, media, tags = [], timestamp }) => (
     <div className="post">
         <div className="container">
-            <Profile {...owner} />
+            <Profile {...{...rest, name: path.split("/").pop()}} />
         </div>
         <MediaCarousel media={media} />
         <div className="container grid gap-y-2">
