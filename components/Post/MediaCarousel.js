@@ -9,6 +9,6 @@ export default ({ media }) => (
             className: "grid justify-center shrink-0 w-full snap-start snap-always"
         }}
         items={media}
-        itemHandler={media => media.image ? <Image {...media} /> : <Video {...media} />}
+        itemHandler={media => media.video ? <Video {...media} /> : <Image {...media} />}
     />
 )
