@@ -84,7 +84,7 @@ export default class Filemanager
 
                     this.users.push(user)
 
-                    posts.forEach(({ media, path: postPath }) => {
+                    posts.forEach(({ media: medias, path: postPath }) => {
                         
                         const post = {
                             id: encode(postPath),
@@ -94,7 +94,7 @@ export default class Filemanager
 
                         this.posts.push(post)
 
-                        media.forEach(({ path: mediaPath, ...rest }) => {
+                        medias.forEach(({ path: mediaPath, ...rest }) => {
                             
                             const media = {
                                 id: encode(mediaPath),
@@ -107,11 +107,11 @@ export default class Filemanager
     
                         })
 
-                        post.picture = this.medias[0].id
+                        post.picture = encode(medias[0].path)
 
                     })
 
-                    user.picture = this.posts[0].picture
+                    user.picture = encode(posts[0].media[0].path)
 
                 })
 
