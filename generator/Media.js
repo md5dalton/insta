@@ -15,6 +15,7 @@ export default class Media
         this.width = width
         this.mktime = birthtime
         this.portrait = height > width
+        // this.type = "image"
 
     }
 
