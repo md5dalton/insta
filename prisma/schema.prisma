@@ -43,6 +43,7 @@ model Post {
 }
 model Media {
     id String @id
+    video Boolean @default(false)
     path String
     height Int
     width Int
