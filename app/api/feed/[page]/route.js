@@ -7,7 +7,7 @@ export async function GET(request, { params: { page } }) {
     return new Response(JSON.stringify({
         media: posts,
         page,
-        end: true
+        end: false
 
     }), { status: 200 })
 
