@@ -6,7 +6,7 @@ export default () => (
     <div className="home">
         <Header />
         <div className="py-3 line-b">
-            <Stories path="/stories" />
+            {/* <Stories path="/stories" /> */}
         </div>
         <Feed path="/feed" />
     </div>
