@@ -4,7 +4,11 @@ import Stories from "../../Stories"
 import Header from "./Header"
 import Info from "./Info"
 
-export default function ({ children, params: {username} }) {
+export default async ({ children, params: {username} }) => {
+
+    const res = await fetch(`${process.env.API}/user/${username}`)
+    
+    const user = await res.json()
 
     const url = `/user/${username}/`
 
@@ -12,15 +16,15 @@ export default function ({ children, params: {username} }) {
         <>
             <Header username={username} />
             <div className="pt-2">
-                <Info />
+                <Info {...user} />
                 <div className="h-36 grid items-center">
-                   <Stories path={`${url}stories`} />
+                   {/* <Stories path={`${url}stories`} /> */}
                 </div>
                 <div className="stats-tabs">
                     <Stats />
                     <TabLinks url={url} />
                 </div>
-                <div className="media">{children}</div>
+                {/* <div className="media">{children}</div> */}
             </div>
         </>
     )
