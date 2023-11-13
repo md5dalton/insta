@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 export default ({ id, width, height }) => (
-   <>
+   <div>
         <Image
             alt=""
             className="row-span-full col-span-full"
@@ -18,5 +18,5 @@ export default ({ id, width, height }) => (
             <div className="controls grow"></div>
             {/* <Indicators items={images} current={index} /> */}
         </div>
-   </>
+   </div>
 )
