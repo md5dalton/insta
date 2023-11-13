@@ -1,5 +1,5 @@
 export default ({ url }) => (
-   <>
+   <div>
         <video
             // autoPlay
             muted
@@ -10,5 +10,5 @@ export default ({ url }) => (
             <div className="controls grow"></div>
             {/* <Indicators items={images} current={index} /> */}
         </div>
-   </>
+   </div>
 )
