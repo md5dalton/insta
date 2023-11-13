@@ -17,6 +17,7 @@ export default class Filemanager
     users = []
     posts = []
     medias = []
+    tags = []
     
     constructor (path, ext) {
         this.path = path
@@ -72,7 +73,13 @@ export default class Filemanager
                     ownerId: superCollection.id
                 }
 
+                const tag = {
+                    id: collection.id,
+                    name: collection.path.replace("/", "")
+                }
+
                 this.collections.push(collection)
+                this.tags.push(tag)
 
                 users.forEach(({ posts, path: userPath }) => {
 
