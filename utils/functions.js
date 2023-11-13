@@ -28,4 +28,6 @@ export const shuffle = ( arr ) => {
     return array
 
 }
+
+export const array_column = (array, column) => array.map(item => item[column])
   
