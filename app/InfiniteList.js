@@ -9,7 +9,7 @@ export default ({ mediaHandler, path, ...props }) => {
         loadmore
     } = useMedia(path)
     
-    const loadmoreHandler = page => !end && !isLoading ? loadmore() : 0
+    const loadmoreHandler = page => !error && !end && !isLoading ? loadmore() : 0
 
     return (
         <InfiniteScroll
