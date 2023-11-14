@@ -5,7 +5,7 @@ export async function GET(request, { params: { page } }) {
     const posts = await getPosts()
     
     return new Response(JSON.stringify({
-        media: [posts.pop()],
+        media: posts,
         page,
         end: posts.length == 0
 
