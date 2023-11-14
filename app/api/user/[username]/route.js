@@ -24,7 +24,9 @@ export async function GET(request, { params: { username } }) {
             },
         ]
     }
-  
-    return new NextResponse.json(user)
+
+    return new Response(JSON.stringify(user))
+    // console.log(new NextResponse.json(user))
+    // return new NextResponse.json(user)
 
 }
