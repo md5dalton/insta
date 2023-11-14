@@ -2,6 +2,7 @@ import { MediaCarouselProvider } from "@/context/MediaCarousel"
 import ButtonIcon from "../elements/ButtonIcon"
 import Profile from "../Profile"
 import UList from "../UList"
+import Indicators from "./Indicators"
 import MediaCarousel from "./MediaCarousel"
 
 export default ({ owner: { path, ...rest }, caption, media, tags = [], timestamp }) => (
@@ -13,11 +14,7 @@ export default ({ owner: { path, ...rest }, caption, media, tags = [], timestamp
             <MediaCarousel media={media} />
             <div className="container grid gap-y-2">
                 <div className="mt-4 relative grid items-center">
-                    <UList
-                        className="absolute flex gap-1 justify-center w-full"
-                        items={media}
-                        itemHandler={item => <div className="bg-white h-[5px] w-[5px] rounded-full"></div>}
-                    />
+                    <Indicators media={media} />
                     <div className="flex justify-between">
                         <div className="flex gap-x-5">
                             <ButtonIcon name="heart" />
