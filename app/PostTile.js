@@ -9,21 +9,25 @@ const TileStat = ({ name, value }) => (
     </div>
 )
 
-export default ({ thumb, id }) => {
-    
+export default ({ picture, id }) => {
+    // console.log(picture)
     const size = "calc(100vw / 3)"
-    // return <>p</>
 
     return (
         <div className="post-tile grid">
-            <Image
+            <img
+                src={`/api/media/${picture}`}
                 className="row-span-full col-span-full"
-                src={thumb}
+                style={{objectFit: "cover", height: size, width: size}}
+            />
+            {/* <Image
+                className="row-span-full col-span-full"
+                src={`/api/media${picture}`}
                 alt="post tile"
                 width={100}
                 height={100}
                 style={{objectFit: "cover", height: size, width: size}}
-            />
+            /> */}
             <Link href={`/post/${id}`} className="row-span-full col-span-full grow-0 bg-black/50 p-2 font-bold opacity-0 transition-all hover:opacity-100">
                 <div className="flex justify-end">
                     <Icon name="user" size="text-xl" />
