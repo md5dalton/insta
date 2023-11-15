@@ -7,14 +7,16 @@ import Info from "./Info"
 export default async ({ children, params: {username} }) => {
 
     const res = await fetch(`${process.env.API}/user/${username}`)
-    
+
+    if (!res.ok) return <p>user not found</p>
+
     const user = await res.json()
 
     const url = `/user/${username}/`
 
-     return (
+    return (
         <>
-            <Header username={username} />
+            <Header user={user} />
             <div className="pt-2">
                 <Info {...user} />
                 <div className="h-36 grid items-center">
@@ -24,7 +26,7 @@ export default async ({ children, params: {username} }) => {
                     <Stats />
                     <TabLinks url={url} />
                 </div>
-                {/* <div className="media">{children}</div> */}
+                <div className="media">{children}</div>
             </div>
         </>
     )
