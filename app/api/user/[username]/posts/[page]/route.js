@@ -1,18 +1,13 @@
-import { NextResponse } from "next/server"
+import { getUserPosts } from "@/actions/user"
 
 export async function GET(request, { params: { username, page } }) {
-    console.log(username, page)
+    
+    const posts = await getUserPosts(username, page)
 
-    // return NextResponse({
-    //     media: [],
-    //     page,
-    //     end: true
-
-    // })
-    return new Response(JSON.stringify({
-        media: [],
+    return Response.json({
+        media: posts.map(({ id, picture }) => ({id, picture})),
         page,
-        end: true
-    }), { status: 200 })
+        end: posts.length <= 10
+    })
 
 }
