@@ -9,16 +9,18 @@ export default ({ id, name, picture, category, description, links }) => (
         </div>
         <div className="grid gap-[2px]">
             <p className="font-bold">{name}</p>
-            <p className="text-white/50">{category}</p>
-            <p>{description}</p>
-            <UList
-                items={links}
-                itemHandler={({ text, url }) => <Link 
-                    prefetch={false} 
-                    href={url}
-                    className="font-semibold text-gray-500"
-                >{text}</Link>}
-            />
+            <p className="text-white/50">{category.name}</p>
+            { description && <p>{description}</p> }
+            {
+                links && <UList
+                    items={links}
+                    itemHandler={({ text, url }) => <Link 
+                        prefetch={false} 
+                        href={url}
+                        className="font-semibold text-gray-500"
+                    >{text}</Link>}
+                />
+            }
         </div>
     </div>
 )
