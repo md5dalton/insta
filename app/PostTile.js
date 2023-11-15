@@ -10,7 +10,7 @@ const TileStat = ({ name, value }) => (
 )
 
 export default ({ picture, id }) => {
-    // console.log(picture)
+    
     const size = "calc(100vw / 3)"
 
     return (
@@ -22,7 +22,7 @@ export default ({ picture, id }) => {
             />
             {/* <Image
                 className="row-span-full col-span-full"
-                src={`/api/media${picture}`}
+                src={`/api/media/${picture}`}
                 alt="post tile"
                 width={100}
                 height={100}
