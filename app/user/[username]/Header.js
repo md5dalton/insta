@@ -1,8 +1,10 @@
-import LinkIcon from "../../../components/elements/LinkIcon"
+import BackButton from "@/components/BackButton"
+import { EllipsisVerticalIcon } from "@heroicons/react/24/solid"
 
-export default ({ username }) => (
-    <header className="sticky top-0 z-50 container bg-black flex items-center line-b py-1">
-        <LinkIcon icon="chevron-left" href="/" />
-        <p className="grow text-center font-bold" href="/">{username}</p>
+export default ({ user }) => (
+    <header className="sticky top-0 z-50 container bg-black flex items-center py-2">
+        <BackButton />
+        <p className="py-2 grow text-center font-bold" href="/">{user.name}</p>
+        <EllipsisVerticalIcon className="h-6" />
     </header>
 )
