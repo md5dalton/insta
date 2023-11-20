@@ -50,6 +50,7 @@ model Media {
     width Int
     mktime DateTime
     portrait Boolean
+    isVideo Boolean
     owner Post @relation(fields: [ownerId], references: [id])
     ownerId String
 }
