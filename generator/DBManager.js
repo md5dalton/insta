@@ -6,7 +6,7 @@ export default class DBManager
     #fm
     #prisma
 
-    #models = ["rootCollection", "collection", "user", "post", "media"]
+    #models = ["rootCollection", "collection", "user", "post", "media", "reel"]
 
     #existing = {}
 
