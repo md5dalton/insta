@@ -4,7 +4,7 @@ export default class Media
 
     path
 
-    constructor (path, stats, metadata) {
+    constructor (path, stats, metadata, isVideo) {
         
         const { birthtime } = stats
         const { height, width } = metadata
@@ -15,7 +15,8 @@ export default class Media
         this.width = width
         this.mktime = birthtime
         this.portrait = height > width
-        // this.type = "image"
+
+        this.isVideo = isVideo
 
     }
 
