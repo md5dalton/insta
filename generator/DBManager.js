@@ -19,10 +19,11 @@ export default class DBManager
 
     async create () {
 
+        console.log("started")
         await this.#fm.createSuperCollections()
+        
+        console.log("creating models")
         this.#fm.createModels()
-
-        console.log(this.#fm.tags)
 
         this.init()
             .then(async () => await this.#prisma.$disconnect())
