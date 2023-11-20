@@ -21,10 +21,11 @@ export default class DBManager
 
         console.log("started")
         await this.#fm.createSuperCollections()
-        
+
         console.log("creating models")
         this.#fm.createModels()
 
+        console.log("Database ops")
         this.init()
             .then(async () => await this.#prisma.$disconnect())
             .catch(async e => {
