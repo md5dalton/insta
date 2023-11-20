@@ -17,6 +17,7 @@ export default class Filemanager
     collections = []
     users = []
     posts = []
+    reels = []
     medias = []
     tags = []
     
@@ -83,6 +84,7 @@ export default class Filemanager
 
             const superCollection = {
                 id: encode(superCollectionPath),
+                name: superCollectionPath.split("/").pop(),
                 path: superCollectionPath.replace(this.path, "")
             }
 
@@ -92,6 +94,7 @@ export default class Filemanager
 
                 const collection = {
                     id: encode(collectionPath),
+                    name: collectionPath.split("/").pop(),
                     path: collectionPath.replace(superCollectionPath, ""),
                     ownerId: superCollection.id
                 }
@@ -108,6 +111,7 @@ export default class Filemanager
 
                     const user = {
                         id: encode(userPath),
+                        name: userPath.split("/").pop(),
                         path: userPath.replace(collectionPath, ""),
                         ownerId: collection.id
                     }
@@ -134,6 +138,18 @@ export default class Filemanager
                             }
     
                             this.medias.push(media)
+
+                            if (media.isVideo) {
+
+                                const reel = {
+                                    id: media.id,
+                                    ownerId: user.id,
+                                    mediaId: media.id
+                                }
+
+                                this.reels.push(reel)
+
+                            }
     
                         })
 
