@@ -1,8 +1,9 @@
 import fs from "fs/promises"
 import sharp from "sharp"
 import { find } from "./finder.js"
-import { connect, encode, group } from "./utils.js"
+import { connect, encode, group, isVideo } from "./utils.js"
 import SuperCollection from "./SuperCollection.js"
+import Ffmpeg from "fluent-ffmpeg"
 
 export default class Filemanager
 {
@@ -28,17 +29,39 @@ export default class Filemanager
         
         const files = await find(this.path, this.#ext)
 
+        // console.log(files[0], isVideo(files[0]))
+
+        // const proc = Ffmpeg.ffprobe(files[0], (err, metadata) => {
+        //     if (err) {
+        //       console.error('Error reading video metadata:', err);
+        //       return;
+        //     }
+          
+        //     // Display video details
+        //     console.log('Video Duration:', metadata.format.duration + ' seconds');
+        //     console.log('Video Format:', metadata.format.format_name);
+        //     console.log('Video Resolution:', metadata.streams[0].width + 'x' + metadata.streams[0].height);
+        //     console.log('Video Codec:', metadata.streams[0].codec_name);
+        // })
+
         await Promise.all(
-            files.map(async item => this.#files.push({
-                path: item,
-                stats: await fs.stat(item),
-                metadata: await sharp(item).metadata()
-            }))
+            files.map(async item => {
+                
+                const video = isVideo(item)
+
+                this.#files.push({
+                    path: item,
+                    video,
+                    stats: await fs.stat(item),
+                    metadata: video ? {width: 0, height: 0} : await sharp(item).metadata()
+                })
+            })
         )
     }
 
     async createSuperCollections () {
 
+        console.log("finding files")
         await this.findFiles()
 
         const superCollections = group(this.#files, ({ path: pathname }) => this.path + "/" + pathname.replace(this.path + "/", "").split("/").shift())
@@ -98,7 +121,7 @@ export default class Filemanager
                             path: postPath.replace(userPath, ""),
                             ownerId: user.id
                         }
-
+                        
                         this.posts.push(post)
 
                         medias.forEach(({ path: mediaPath, ...rest }) => {
