@@ -55,7 +55,7 @@ export const isVideo = file => {
 
     const ext = path.extname(file)
 
-    return ["mp4"].includes(ext.replace(".", ""))
+    return ["mp4"].includes(ext.toLowerCase().replace(".", ""))
 
     // const type = await fileTypeFromFile(path)
     
