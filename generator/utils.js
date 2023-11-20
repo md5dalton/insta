@@ -1,4 +1,6 @@
 import crypto from "crypto"
+import path from "path"
+import { fileTypeFromFile } from "file-type"
 
 export const group = (items, fn) => {
 
@@ -48,3 +50,15 @@ export const connect = ({ id }) => ({
         id: id
     }
 })
+
+export const isVideo = file => {
+
+    const ext = path.extname(file)
+
+    return ["mp4"].includes(ext.replace(".", ""))
+
+    // const type = await fileTypeFromFile(path)
+    
+    // return type.mime.startsWith("video/")
+    
+}
