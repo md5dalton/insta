@@ -1,5 +1,4 @@
 import Media from "./Media.js"
-import { group } from "./utils.js"
 
 export default class Post
 {
@@ -17,9 +16,9 @@ export default class Post
 
     createMedia () {
         
-        this.media = this.#files.map(({ path, stats, metadata }) => {
+        this.media = this.#files.map(({ path, video, stats, metadata }) => {
 
-            const media = new Media(path, stats, metadata)
+            const media = new Media(path, stats, metadata, video)
 
             return media
             
