@@ -30,7 +30,7 @@ export async function GET(request, { params: { slug } }) {
         const collection = user.owner
         const rootCollection = collection.owner
 
-        const imagePath = "a:/media/images" + rootCollection.path + collection.path + user.path + post.path.split("<").shift() + media.path
+        const imagePath = process.env.MEDIA_ROOT + rootCollection.path + collection.path + user.path + post.path.split("<").shift() + media.path
         
         return fs.existsSync(imagePath) ? new Response(fs.readFileSync(imagePath), {
                 headers: {"Content-Type": "image/jpeg"},
