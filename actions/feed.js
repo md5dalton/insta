@@ -15,7 +15,8 @@ export const getPosts = async () => {
                 select: {
                     id: true,
                     height: true,
-                    width: true
+                    width: true,
+                    isVideo: true
                 }
             },
             owner: {
