@@ -4,7 +4,7 @@ import Icon from "../../../components/elements/Icon"
 import Profile from "../../../components/Profile"
 import StatButton from "./StatButton"
 
-export default ({ id, owner, muteHandler, isMuted }) => (
+export default ({ id, name, picture, muteHandler, isMuted }) => (
     <div className="overlay row-span-full col-span-full p-4 flex flex-col">
         <div className="header flex items-center justify-between">
             <div className="uppercase font-bold">reels</div>
@@ -28,8 +28,8 @@ export default ({ id, owner, muteHandler, isMuted }) => (
             </div>
         </div>
         <div className="details">
-            <Profile {...owner} />
-            <div>{`reel description: ${id}`}</div>
+            <Profile {...{id, name, picture}} />
+            <div>{`reel description: ${name}`}</div>
             <div>audio profile</div>
         </div>
     </div>
