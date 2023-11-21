@@ -11,7 +11,6 @@ export default ({ path }) => {
 
     const mediaHandler = media => <Reel height={height} muted={muted} setMuted={setMuted} {...media} /> 
 
-
     return (
         <InfiniteMedia
             listProps={{style: {height}}}
