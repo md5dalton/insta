@@ -1,9 +1,9 @@
 import Player from "./Player"
 
-export default ({ height, ...props}) => (
+export default ({ height, id, owner}) => (
     <div
         style={{height: height}} 
         className="reel grid snap-end snap-always">
-        <Player {...props} />
+        <Player src={`/api/stream/${id}`} owner={owner} />
     </div>
 )
