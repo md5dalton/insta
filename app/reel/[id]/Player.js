@@ -3,7 +3,7 @@ import { useRef } from "react"
 import { Waypoint } from "react-waypoint"
 import Overlay from "./Overlay"
 
-export default ({ video: src, muted, setMuted, ...props }) => {
+export default ({ src, muted, setMuted, owner }) => {
 
     const video = useRef(null)
 
@@ -33,7 +33,7 @@ export default ({ video: src, muted, setMuted, ...props }) => {
                     onLeave={unload}
                 />
             </div>
-            <Overlay {...props} muteHandler={toggleMute} isMuted={muted} />
+            <Overlay {...owner} muteHandler={toggleMute} isMuted={muted} />
         </>
     )
 }
