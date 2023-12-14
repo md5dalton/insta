@@ -2,7 +2,7 @@ import fs from "fs"
 
 export async function GET(req, { params: { slug } }) {
 
-    const imagePath = process.env.THUMB_ROOT + slug + ".jpg"
+    const imagePath = `${process.env.THUMB_ROOT}/${slug}.jpg`
     
     return fs.existsSync(imagePath) ? new Response(fs.readFileSync(imagePath), {
             headers: {"Content-Type": "image/jpeg"},
