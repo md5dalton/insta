@@ -14,7 +14,7 @@ export default props => {
 
     return (
         <div ref={ref}>
-            {props.video ?  <Video {...props} /> : <Image {...props} />}
+            {props.reel ?  <Video {...props} /> : <Image {...props} />}
         </div>
     )
 }
