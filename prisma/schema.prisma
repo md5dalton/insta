@@ -53,7 +53,6 @@ model Media {
     width Int
     mktime DateTime
     portrait Boolean
-    isVideo Boolean
     owner Post @relation(fields: [ownerId], references: [id])
     ownerId String
     reel Reel?
@@ -61,6 +60,7 @@ model Media {
 
 model Reel {
     id String @id
+    path String
     owner User @relation(fields: [ownerId], references: [id])
     media Media @relation(fields: [mediaId], references: [id])
     ownerId String
