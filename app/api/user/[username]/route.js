@@ -1,10 +1,9 @@
 import { getUser } from "@/actions/user"
-import { NextResponse } from "next/server"
 
 export async function GET(request, { params: { username } }) {
 
     const user = await getUser(username)
-
+    
     if (!user) return Response.json({error: "User not found"}, { status: 404 })
     
     return Response.json({
