@@ -9,7 +9,7 @@ const TileStat = ({ name, value }) => (
     </div>
 )
 
-export default ({ picture, id }) => {
+export default ({ id }) => {
 
     const width = "calc(100vw / 3)"
     const height = "calc(100vh / 3)"
@@ -18,7 +18,7 @@ export default ({ picture, id }) => {
         <div className="reel-tile grid bg-white/50" style={{height, width}}>
             <img
                 className="row-span-full col-span-full"
-                src={picture}
+                src={`/api/thumb/${id}`}
                 // alt="reel tile"
                 width={100}
                 height={100}
