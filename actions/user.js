@@ -9,7 +9,7 @@ export const getUser = async user => await prisma.user.findUnique({
     }
 })
 
-export const getUserPosts = async (user, page) => await prisma.post.findMany({
+export const getPosts = async (user, page) => await prisma.post.findMany({
     where: {
         ownerId: user
     },
@@ -18,4 +18,15 @@ export const getUserPosts = async (user, page) => await prisma.post.findMany({
     orderBy: {
         path: "desc"
     }
+})
+
+export const getReels = async (user, page) => await prisma.reel.findMany({
+    where: {
+        ownerId: user
+    },
+    skip: page * 10,
+    take: 10,
+    // orderBy: {
+    //     path: "desc"
+    // }
 })
