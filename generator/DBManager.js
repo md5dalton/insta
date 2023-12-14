@@ -1,3 +1,4 @@
+import fs from "fs/promises"
 import { PrismaClient } from "@prisma/client"
 import Filemanager from "./Filemanager.js"
 
@@ -50,18 +51,24 @@ export default class DBManager
 
     }
 
-    filterModels (model) {
-
-        return this.#fm[model + "s"].filter(({ id }) => !this.#existing[model].includes(id))
-
-    }
-
     async init () {
 
         await this.getExisting()
 
+        const models = {}
+
+        for (const model of this.#models) models[model] = this.#fm[model + "s"].filter(({ id }) => !this.#existing[model].includes(id))
+
+        await Promise.all(
+            models.media.map(async media => {
+                await media.getInfo()
+                await media.getMetadata()
+            }),
+            models.reel.forEach(reel => reel.generateThumb())
+        )
+        // console.log(models)
         for (const model of this.#models) await this.#prisma[model].createMany({
-            data: this.filterModels(model)
+            data: models[model]
         })
 
     }
