@@ -1,8 +1,8 @@
-import { getUserPosts } from "@/actions/user"
+import { getPosts } from "@/actions/user"
 
-export async function GET(request, { params: { username, page } }) {
+export async function GET(req, { params: { username, page } }) {
     
-    const posts = await getUserPosts(username, page)
+    const posts = await getPosts(username, page)
 
     return Response.json({
         media: posts.map(({ id, picture }) => ({id, picture})),
