@@ -1,10 +1,11 @@
-export default ({ url }) => (
+export default ({ reel: { id } }) => (
    <div>
         <video
+            poster={`/api/thumb/${id}`}
             // autoPlay
             muted
             className="row-span-full col-span-full"
-            src={url}
+            // src={url}
         />
         <div className="overlay row-span-full col-span-full flex flex-col">
             <div className="controls grow"></div>
