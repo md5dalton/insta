@@ -4,6 +4,8 @@ import { find } from "./finder.js"
 import { connect, encode, group, isVideo } from "./utils.js"
 import SuperCollection from "./SuperCollection.js"
 import Ffmpeg from "fluent-ffmpeg"
+import Media from "./models/Media.js"
+import Reel from "./models/Reel.js"
 
 export default class Filemanager
 {
@@ -45,19 +47,19 @@ export default class Filemanager
         //     console.log('Video Codec:', metadata.streams[0].codec_name);
         // })
 
-        await Promise.all(
-            files.map(async item => {
+        // await Promise.all(
+            files.map(item => {
                 
-                const video = isVideo(item)
+                // const video = isVideo(item)
 
                 this.#files.push({
                     path: item,
-                    video,
-                    stats: await fs.stat(item),
-                    metadata: video ? {width: 0, height: 0} : await sharp(item).metadata()
+                    // video,
+                    // stats: await fs.stat(item),
+                    // metadata: video ? {width: 0, height: 0} : await sharp(item).metadata()
                 })
             })
-        )
+        // )
     }
 
     async createSuperCollections () {
@@ -128,24 +130,15 @@ export default class Filemanager
                         
                         this.posts.push(post)
 
-                        medias.forEach(({ path: mediaPath, ...rest }) => {
+                        medias.forEach(({ path: mediaPath }) => {
                             
-                            const media = {
-                                id: encode(mediaPath),
-                                path: mediaPath.replace(postPath.split("<").shift(), ""),
-                                ownerId: post.id,
-                                ...rest
-                            }
-    
+                            const media = new Media(mediaPath, post, postPath)
+
                             this.medias.push(media)
 
-                            if (media.isVideo) {
+                            if (media.isVideo()) {
 
-                                const reel = {
-                                    id: media.id,
-                                    ownerId: user.id,
-                                    mediaId: media.id
-                                }
+                                const reel = new Reel(mediaPath, user, postPath)
 
                                 this.reels.push(reel)
 
