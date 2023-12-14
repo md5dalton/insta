@@ -16,9 +16,9 @@ export default class Post
 
     createMedia () {
         
-        this.media = this.#files.map(({ path, video, stats, metadata }) => {
+        this.media = this.#files.map(({ path }) => {
 
-            const media = new Media(path, stats, metadata, video)
+            const media = new Media(path)
 
             return media
             
