@@ -23,6 +23,8 @@
     "swr": "^2.0.0"
   },
   "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
     "autoprefixer": "^10.4.13",
     "file-type": "^18.7.0",
     "fluent-ffmpeg": "^2.1.2",
