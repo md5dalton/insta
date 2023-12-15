@@ -13,9 +13,10 @@ export default ({ path }) => {
 
     return (
         <InfiniteMedia
-            listProps={{style: {height}}}
+            // listProps={{style: {height}}}
+            listProps={{itemHandlerProps: {className: "h-full"}}}
             path={path}
-            listClassName="overflow-y-scroll snap-y snap-mandatory"
+            listClassName="overflow-y-scroll snap-y snap-mandatory absolute bg-pink-500 z-10 h-full w-full"
             bottomOffset="-10px"
             mediaHandler={mediaHandler}
         />
