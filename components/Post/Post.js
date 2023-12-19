@@ -23,8 +23,6 @@ export default ({ owner: { path, ...rest }, caption, media, tags = [], timestamp
                         </div>
                         <ButtonIcon name="bookmark2" />
                     </div>
-                    
-
                 </div>
                 {   caption &&
                     <div className="caption flex gap-2">
