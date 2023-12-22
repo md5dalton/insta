@@ -1,6 +1,6 @@
 import { getPosts } from "@/actions/feed"
 
-export async function GET(request, { params: { page } }) {
+export async function GET(req, { params: { page } }) {
 
     const posts = await getPosts()
     
@@ -8,7 +8,6 @@ export async function GET(request, { params: { page } }) {
         media: posts,
         page,
         end: posts.length == 0
-
     }), { status: 200 })
 
 }
