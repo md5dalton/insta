@@ -1,7 +1,8 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default ({ id, width, height }) => (
-   <div>
+   <Link href={`/image/${id}`}>
         <Image
             alt=""
             className="row-span-full col-span-full"
@@ -18,5 +19,5 @@ export default ({ id, width, height }) => (
             <div className="controls grow"></div>
             {/* <Indicators items={images} current={index} /> */}
         </div>
-   </div>
+   </Link>
 )
