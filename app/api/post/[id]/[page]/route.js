@@ -8,12 +8,12 @@ export async function GET(req, { params: { id, page } }) {
 
     const posts =  await getPosts(post.ownerId, page)
 
-    // console.log(posts)
+    // console.log(posts.length)
 
     return Response.json({
         media: posts,
         page,
-        end: true
+        end: posts.length <= 0
     })
 
 }
