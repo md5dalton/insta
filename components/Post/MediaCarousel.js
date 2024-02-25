@@ -12,7 +12,7 @@ export default ({ media }) => {
                 <p>{getCurrent(media) || 1}/{media.length}</p>
             </div>
             <UList
-                className="flex overflow-x-scroll snap-x snap-mandatory"
+                className="flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory items-start max-h-[80vh]"
                 itemHandlerProps={{
                     className: "grid justify-center shrink-0 w-full snap-start snap-always"
                 }}
