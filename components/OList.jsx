@@ -1,0 +1,1 @@
+export default ({ items, itemHandler }) => items.map((item, index) => itemHandler(item))
