@@ -1,6 +1,6 @@
 import Stats from "./Stats"
 import TabLinks from "./TabLinks"
-import Stories from "../../Stories"
+import Stories from "../../(stories)/Stories"
 import Header from "./Header"
 import Info from "./Info"
 import { getUser } from "@/actions/user"
