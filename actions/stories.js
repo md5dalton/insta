@@ -27,7 +27,5 @@ export const getStories = async () => {
             items={items}
             itemHandler={item => <Story {...item} />}
         />
-    ) 
-    // items.map((item, index))
-    // id, name, picture, hasNew
+    )
 }
