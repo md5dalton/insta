@@ -3,17 +3,18 @@ import OList from "@/components/OList"
 import Post from "@/components/Post/Post"
 import prisma from "@/utils/prisma"
 
+
 export const getPosts = async () => {
 
-    const randomRecords = await prisma.$queryRaw`SELECT id FROM post ORDER BY RAND() LIMIT 10`
+    // const randomRecords = await prisma.$queryRaw`SELECT id FROM post ORDER BY RAND() LIMIT 10`
    
-    const items = await prisma.post.findMany({
-        where: {
-            id: {
-                in: randomRecords.map(({ id }) => id)
-            }
-        },
-        include: {
+    const items = await prisma.post.findManyRandom(10, {
+        // where: {
+        //     id: {
+        //         in: randomRecords.map(({ id }) => id)
+        //     }
+        // },
+        select: {
             media: {
                 select: {
                     id: true,
@@ -32,7 +33,6 @@ export const getPosts = async () => {
         }
     })
 
-    
     return (
         <OList
             items={items}
