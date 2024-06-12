@@ -66,7 +66,7 @@ export default class DBManager
             }),
             models.reel.forEach(reel => reel.generateThumb())
         )
-        console.log(models)
+        
         for (const model of this.#models) await this.#prisma[model].createMany({
             data: models[model]
         })
