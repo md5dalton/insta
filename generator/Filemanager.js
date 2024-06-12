@@ -47,19 +47,20 @@ export default class Filemanager
         //     console.log('Video Codec:', metadata.streams[0].codec_name);
         // })
 
-        // await Promise.all(
-            files.map(item => {
+        await Promise.all(
+            files.map(async item => {
                 
-                // const video = isVideo(item)
+                const video = isVideo(item)
 
                 this.#files.push({
                     path: item,
-                    // video,
-                    // stats: await fs.stat(item),
-                    // metadata: video ? {width: 0, height: 0} : await sharp(item).metadata()
+                    video,
+                    stats: await fs.stat(item),
+                    metadata: video ? {width: 0, height: 0} : await sharp(item).metadata()
                 })
             })
-        // )
+        )
+
     }
 
     async createSuperCollections () {
