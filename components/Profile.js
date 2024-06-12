@@ -1,12 +1,13 @@
 import Link from "next/link"
 import ContextMenu from "./ContextMenu"
 import ProfilePhoto from "./elements/ProfilePhoto"
+import { getImageUrl } from "@/utils/functions"
 
 export default ({ children, id, name, picture, size = "S", isLink = true }) => (
     <div className="profile flex items-center gap-x-4 py-4">
         <ProfilePhoto
             url={isLink ? `/user/${id}` : ""}
-            src={`/api/media/${picture}`}
+            src={getImageUrl(picture)}
             alt={id}
             size={size}
         />
