@@ -1,3 +1,4 @@
+"use client"
 import { MediaCarouselProvider } from "@/context/MediaCarousel"
 import ButtonIcon from "../elements/ButtonIcon"
 import Profile from "../Profile"
