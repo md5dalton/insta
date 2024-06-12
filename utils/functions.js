@@ -30,4 +30,11 @@ export const shuffle = ( arr ) => {
 }
 
 export const array_column = (array, column) => array.map(item => item[column])
-  
+
+export const getImageUrl = str => {
+
+    const [ type, id ] = str.split(":")
+
+    return type == "m" ? `/api/media/${id}` : `/api/thumb/${id}`
+
+}
