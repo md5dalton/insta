@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Button from "../../../components/elements/Button"
 import ButtonIcon from "../../../components/elements/ButtonIcon"
 import Icon from "../../../components/elements/Icon"
@@ -28,7 +29,9 @@ export default ({ id, name, picture, muteHandler, isMuted }) => (
             </div>
         </div>
         <div className="details">
-            <Profile {...{id, name, picture}} />
+            <Link href={`/user/${id}`}>
+                <Profile {...{id, name, picture}} />
+            </Link>
             <div>{`reel description: ${name}`}</div>
             <div>audio profile</div>
         </div>
