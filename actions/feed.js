@@ -4,7 +4,7 @@ import Post from "@/components/Post/Post"
 import prisma from "@/utils/prisma"
 
 
-export const getPosts = async () => {
+export const getPosts = async page => {
 
     // const randomRecords = await prisma.$queryRaw`SELECT id FROM post ORDER BY RAND() LIMIT 10`
    
@@ -32,9 +32,12 @@ export const getPosts = async () => {
             }
         }
     })
+    return items
+    // console.log(items)
 
     return (
         <OList
+            page={page}
             items={items}
             itemHandler={item => <Post {...item} />}
         />
