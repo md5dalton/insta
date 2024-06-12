@@ -10,7 +10,7 @@ export default ({ handler }) => {
 
     const [ data, setData ] = useState([])
     
-    
+    console.log(data)
     useEffect(() => {
         if (inView) {
             
