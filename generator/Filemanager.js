@@ -128,7 +128,7 @@ export default class Filemanager
                             path: postPath.replace(userPath, ""),
                             ownerId: user.id
                         }
-                        
+
                         this.posts.push(post)
 
                         medias.forEach(({ path: mediaPath }) => {
@@ -137,21 +137,27 @@ export default class Filemanager
 
                             this.medias.push(media)
 
+                            
                             if (media.isVideo()) {
-
+                                
                                 const reel = new Reel(mediaPath, user, postPath)
-
+                                
                                 this.reels.push(reel)
 
-                            }
-    
-                        })
+                                if (!post.picture) post.picture = `t:${reel.id}`
+                                
+                            } else {
 
-                        post.picture = encode(medias[0].path)
+                                if (!post.picture) post.picture = `m:${media.id}`
+                                
+                            }
+
+                            
+                        })
+                        
+                        if (!user.picture) user.picture = post.picture
 
                     })
-
-                    user.picture = encode(posts[0].media[0].path)
 
                 })
 
