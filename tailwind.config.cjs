@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#050418",
-        "very-dark-grey": "#0c0f14"
+        "very-dark-grey": "#0c0f14",
+        "dark-grey": "#25282d",
       },
       container: {
         padding: '1rem',
