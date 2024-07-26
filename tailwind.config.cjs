@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#050418"
+        primary: "#050418",
+        "very-dark-grey": "#0c0f14"
       },
       container: {
         padding: '1rem',
