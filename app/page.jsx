@@ -8,6 +8,6 @@ export default () => (
         <div className="py-3 line-b">
             <Stories />
         </div>
-        <Feed path="/feed" />
+        {/* <Feed path="/feed" /> */}
     </div>
 )
