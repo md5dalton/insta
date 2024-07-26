@@ -1,28 +1,22 @@
-import Icon from "../components/elements/Icon"
-import NavLink from "../components/elements/NavLink"
-
-const LinkIcon = ({ href, icon }) => (
-    <NavLink href={href} className="pt-3 pb-4 grid place-items-center">
-        <Icon name={icon} />
-    </NavLink> 
-)
+import IconLink from "@/components/IconLink"
+import { FilmIcon, HeartIcon, HomeIcon, MagnifyingGlassIcon, PlusCircleIcon } from "@heroicons/react/24/outline"
 
 export default () => (
-    <footer className="
-        line-t
-        w-full
-        grid
-        grid-cols-5
-        fixed
-        bottom-0
-        h-14
-        bg-very-dark-grey
-        font-bold"
-    >
-        <LinkIcon href="/" icon="home2" />
-        <LinkIcon href="/explore" icon="magnifier" />
-        <LinkIcon href="/reel" icon="clapboard-play" />
-        <LinkIcon href="/activity" icon="heart" />
-        <LinkIcon href="/user/current" icon="user" />
+    <footer className="w-full fixed bottom-0 bg-very-dark-grey flex px-4 justify-between py-1">
+        <IconLink href="/">
+            <HomeIcon height={24} />
+        </IconLink>
+        <IconLink href="/explore">
+            <MagnifyingGlassIcon height={24} />
+        </IconLink>
+        <IconLink href="/create">
+            <PlusCircleIcon height={28} />
+        </IconLink>
+        <IconLink href="/reels">
+            <FilmIcon height={24} />
+        </IconLink>
+        <IconLink href="/activity">
+            <HeartIcon height={24} />
+        </IconLink>
     </footer>
 )
