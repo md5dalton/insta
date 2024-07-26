@@ -3,9 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default ({ id, name, picture, hasNew = true }) => (
-    <Link href={`/stories/${id}`} className="shrink-0 grid w-20 gap-1">
+    <Link href={`/stories/${id}`} className="shrink-0 grid w-24 gap-1">
         <div className={`${hasNew ? "accent-ring " : ""}rounded-full p-[3px]`}>
-            <div className="h-20 w-20 rounded-full border-4 border-black">
+            <div className="h-24 w-24 rounded-full border-4 border-black">
                 <Image
                     height={96}
                     width={96}
