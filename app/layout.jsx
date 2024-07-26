@@ -1,11 +1,15 @@
 import "../styles/globals.css"
-import "../public/fonts/linearicons_coders/css/linearicons.css"
 import Footer from "./Footer"
+
+
+export const metadata = {
+  title: "Letlapa",
+  description: "Media viewer",
+}
 
 export default function RootLayout({ children }) {
   return (
-    <html style={{background: "black"}}>
-      <head />
+    <html className="bg-black">
       <body className="text-white text-sm pb-16">
         <main>
           {children}
