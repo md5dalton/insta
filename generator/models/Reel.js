@@ -26,7 +26,7 @@ export default class Reel extends Media
         ffmpeg(this.getRealPath())
             .screenshots({
                 count: 1,
-                folder: "s:/thumbs",
+                folder: "a:/media/_thumbs",
                 filename
             })
             .on("end", () => {
