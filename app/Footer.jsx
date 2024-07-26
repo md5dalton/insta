@@ -16,7 +16,7 @@ export default () => (
         fixed
         bottom-0
         h-14
-        bg-black
+        bg-very-dark-grey
         font-bold"
     >
         <LinkIcon href="/" icon="home2" />
