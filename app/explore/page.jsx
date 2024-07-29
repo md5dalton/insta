@@ -1,10 +1,10 @@
-// import MansoryList from "./MansoryList"
+import MansoryList from "./MansoryList"
 
 import Header from "./Header"
 
 export default () => (
     <div>
         <Header />
-        {/* <MansoryList /> */}
+        <MansoryList />
     </div>
 )
