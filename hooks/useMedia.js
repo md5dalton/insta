@@ -2,32 +2,36 @@ import { API } from "../utils/constants"
 import { fetcher } from "../utils/functions"
 import useSWRInfinite from "swr/infinite"
 
-export default (path) => {
+export default (path, initialSize) => {
     
     const url = `/api/${path}/`
     
     const { 
-        data, error, mutate, size, 
-        setSize, isValidating 
-    } = useSWRInfinite(index => url + index, fetcher, { revalidateAll: false, revalidateFirstPage: false })
-    
-    const { end } = data ? data[0] : {} 
-    const isLoadingInitialData = !data && !error
-    const isLoadingMore =
-        isLoadingInitialData ||
-        (size > 0 && data && typeof data[size - 1] === "undefined")
+        data, error, isValidating, isLoading, size, 
+        setSize, mutate  
+    } = useSWRInfinite(index => url + index, fetcher, {initialSize})
+
+    let end = true
     
     let media = []
-
-    if (data) data.map(arr => {
-        media = media.concat(...arr.media)
-    })
     
+    if (data) {
+        for (const item of data) for (const i of item.media) media.push(i) 
+            // console.log([...item.media])
+            // media = [...item.media]
+        // }
+        end = data[size - 1]?.end
+        // console.log(data, size)
+    }
     return {
-        media: media,
-        isLoading: isLoadingMore,
-        end,
+        media,
+        size,
         error,
-        loadmore: () => setSize(size + 1)
+        loadmore: () => !isLoading && !error ? setSize(size + 1) : null
     }
 }
+
+    // const isLoadingInitialData = !data && !error
+    // const isLoadingMore =
+    // isLoadingInitialData ||
+    // (size > 0 && data && typeof data[size - 1] === "undefined")
