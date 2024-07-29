@@ -10,7 +10,7 @@ export default ({ picture, id, hasReel, hasMany }) =>  (
     >
         <Image
             className="row-span-full col-span-full h-full w-full object-cover object-top"
-            src={`/api/thumb/5So3sLIu`}
+            src={getImageUrl(picture)}
             alt="reel tile"
             width={100}
             height={100}
