@@ -4,35 +4,38 @@ import MansoryColumn from "./MansoryColumn"
 import UList from "@/components/UList"
 import useMedia from "@/hooks/useMedia"
 import List from "@/components/List"
+import { useInView } from "react-intersection-observer"
+import { useEffect } from "react"
+import { explore } from "@/signals/sizes"
 
 export default () => {
 
-    // const { 
-    //     media, error, isLoading, end,
-    //     loadmore
-    // } = useMedia("/explore")
+    const { ref, inView } = useInView()
+
+    const { 
+        media, error, isLoading, end, size,
+        loadmore
+    } = useMedia("/explore", explore.value)
     
-    // const loadmoreHandler = page => !end && !isLoading ? loadmore() : 0
-    
-    const post = {picture: "t:sfse", hasMany: true}
-
-    const posts =[]
-
-    const media = []
-
-    for (let index = 0; index < 8; index++) posts.push({id: index, ...post})
-
-    for (let i = 0; i < posts.length; i += 2) media.push(posts.slice(i, i + 2))
-    
-    media.splice(2, 0, [{id: 0, reel: true}], [{id: 1, reel: true}])
-    // console.log(media)
+    useEffect(() => {
+        if (inView) {
+            console.log("in view")
+            loadmore()
+        }
+    }, [inView])
+    useEffect(() => {
+        console.log("explore.value", explore.value)
+        console.log("size", size)
+        if (size > explore.value) explore.value = size + 1
+    }, [size])
+    console.log(explore.value)
     return (
-        <InfiniteScroll
-            loadMore={()=>1}
-            hasMore={true}
-            // threshold={600}
-            // element="ul"
-        >
+        // <InfiniteScroll
+        //     loadMore={loadmore}
+        //     hasMore={true}
+        //     threshold={600}
+        //     element="ul"
+        // >
             <UList
                 className="grid grid-cols-3 gap-[3px]"
                 itemHandlerProps={{
@@ -40,7 +43,9 @@ export default () => {
                 }}
                 items={media}
                 itemHandler={item => <MansoryColumn items={item} />}
-            />
-        </InfiniteScroll>
+            >
+                <div ref={ref} />
+            </UList>
+        // </InfiniteScroll>
     )
 }
