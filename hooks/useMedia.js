@@ -4,7 +4,7 @@ import useSWRInfinite from "swr/infinite"
 
 export default (path) => {
     
-    const url = `${API}${path}/`
+    const url = `/api/${path}/`
     
     const { 
         data, error, mutate, size, 
