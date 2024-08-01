@@ -32,13 +32,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# test media
-/public/images/iggy
-/public/videos
-
-
-
-
 /prisma/migrations
 
 yarn-error.log
