@@ -1,7 +1,7 @@
 export const fetcher = async (...args) => {
     const res = await fetch(...args, {
         headers: {
-            "Access-Control-Allow-Origin": "*"
+            // "Access-Control-Allow-Origin": "*"
         }
     })
     return await res.json()
