@@ -18,12 +18,12 @@ export async function GET(req, { params: { page } }) {
 
     const pageSize = 8
 
-    for (let index = 0; index < pageSize; index++) posts.push({id: index, picture: `t:${ids[page*pageSize + index]}`, ...post})
+    for (let index = 0; index < pageSize; index++) posts.push({id: ids[page*pageSize + index], picture: `t:${ids[page*pageSize + index]}`, ...post})
 
     for (let i = 0; i < posts.length; i += 2) media.push(posts.slice(i, i + 2))
     
-    media.splice(2, 0, [{id: 0, reel: true}], [{id: 1, reel: true}])
-    console.log(media.length)
+    media.splice(2, 0, [{id: ids.pop(), reel: true}], [{id: ids.pop(), reel: true}])
+    
     return Response.json({
         media: media,
         page,
