@@ -1,9 +1,10 @@
+import { API } from "@/utils/constants"
 import { fetcher } from "@/utils/functions"
 import useSWRInfinite from "swr/infinite"
 
 export default (path, initialSize) => {
     
-    const url = `/api/${path}/`
+    const url = `${API}${path}/`
     
     const { 
         data, error, isValidating, isLoading, size, 
