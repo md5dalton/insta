@@ -1,1 +1,1 @@
-export const API = process.env.NEXT_PUBLIC_HOST + "/api"
+export const API = process.env.NEXT_PUBLIC_API
