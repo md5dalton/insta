@@ -1,3 +1,5 @@
+import { API } from "./constants"
+
 export const fetcher = async (...args) => {
     const res = await fetch(...args, {
         headers: {
@@ -35,6 +37,6 @@ export const getImageUrl = str => {
 
     const [ type, id ] = str.split(":")
 
-    return type == "m" ? `/api/media/${id}` : `/api/thumb/${id}`
+    return API + (type == "m" ? `/media/${id}` : `/thumb/${id}`)
 
 }
