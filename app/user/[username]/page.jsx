@@ -1,7 +1,3 @@
-import Posts from "./Posts"
+import { redirect } from "next/navigation"
 
-export default ({ params: { username } }) => (
-    <div className="default-user-media-list">
-        <Posts path={`/user/${username}/posts`} />
-    </div>
-)
+export default ({ params: { username } }) => redirect(`/user/${username}/reels`)

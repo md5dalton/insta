@@ -1,59 +1,41 @@
+import ProfilePhoto from "@/components/elements/ProfilePhoto"
 import Stats from "./Stats"
+import Button from "@/components/elements/Button"
 import TabLinks from "./TabLinks"
-import Stories from "../../(stories)/Stories"
-import Header from "./Header"
-import Info from "./Info"
-import { getUser } from "@/actions/user"
 
 export default async ({ children, params: {username} }) => {
 
-    const user = await getUser(username)
-    
-    if (!user) return <p>user not found</p>
-    
-    const userData = {
-        name: user.path.split("/").pop(),
-        picture: user.picture,
-        hasNew: true,
-        id: user.id,
-        username: user.id,
-        category: {
-            name: user.owner.path.split("/").pop(),
-            id: user.owner.id,
-        },
-        // description: "This is my official Letlapa account. Follow me and keep up to date of what I am up to.",
-        // links: [
-        //     {
-        //         text: "whatsapp/me",
-        //         url: "https://whatsapp.me/234322"
-        //     },
-        //     {
-        //         text: "linktr.ee/iggy",
-        //         url: "https://linktr.ee/iggy"
-        //     },
-        //     {
-        //         text: "twitter/iggy",
-        //         url: "https://twitter.com/iggy"
-        //     },
-        // ]
-    }
-
-    const url = `/user/${username}/`
+    const name = "Thobymbhele"
+    const stats = [
+        {"name": "posts", value: 147},
+        {"name": "followers", value: "347K"},
+        {"name": "following", value: "2"}
+    ]
 
     return (
-        <>
-            <Header user={userData} />
-            <div className="pt-2">
-                <Info {...userData} />
-                <div className="h-36 grid items-center">
-                   {/* <Stories path={`${url}stories`} /> */}
+        <div className="pt-4">
+            <div className="p-4 space-y-4">
+                <div className="flex items-center gap-10">
+                    <ProfilePhoto
+                        url={false}
+                        src={"/profile.jpg"}
+                        alt=""
+                        size="L"
+                        hasNew={true}
+                    />
+                    <Stats values={stats} />
                 </div>
-                <div className="stats-tabs">
-                    <Stats />
-                    <TabLinks url={url} />
+                <div className="space-y-4">
+                    <div>
+                        <p className="font-bold">{name}</p>
+                    </div>
+                    <div>
+                        <Button>Follow</Button>
+                    </div>
                 </div>
-                <div className="media">{children}</div>
+                <TabLinks user={username} />
             </div>
-        </>
+            <div>{children}</div>
+        </div>
     )
 }
