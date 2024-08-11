@@ -10,7 +10,7 @@ export default ({ children, params: {username} }) => {
 
     const { data, isLoading, error } = useFetch(`/user/${username}`)
 
-    return isLoading ? <p>loading</p> : error ? <p>error</p> : 
+    return isLoading ? <p>loading</p> : error ? <p>{error.message}</p> : 
         (
         <div className="pt-4">
             <Info {...data.user} />

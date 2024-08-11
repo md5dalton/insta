@@ -25,7 +25,7 @@ export default ({ params: { username } }) => {
         <UList
             className="grid grid-cols-3 gap-[3px]"
             itemHandlerProps={{
-                className: "h-[calc(100vw/3)]"
+                className: "h-[calc(100vw/3)] overflow-hidden"
             }}
             items={media}
             itemHandler={item => <PostTile {...item} />}
