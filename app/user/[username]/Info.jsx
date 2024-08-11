@@ -1,26 +1,30 @@
-import Link from "next/link"
-import Profile from "@/components/Profile"
-import UList from "@/components/UList"
+import ProfilePhoto from "@/components/elements/ProfilePhoto"
+import { getImageUrl } from "@/utils/functions"
+import Stats from "./Stats"
+import Button from "@/components/elements/Button"
+import TabLinks from "./TabLinks"
 
-export default ({ id, name, picture, category, description, links }) => (
-    <div className="container user-info">
-        <div className="profile-wrapper">
-            <Profile {...{name, id, picture, isLink: false, size: "L"}}/>
+export default ({ id, name, picture, stats, owner }) => (
+    <div className="p-4 space-y-4">
+        <div className="flex items-center gap-10">
+            <ProfilePhoto
+                url={false}
+                src={getImageUrl(picture)}
+                alt=""
+                size="L"
+                hasNew={true}
+            />
+            <Stats values={stats} />
         </div>
-        <div className="grid gap-[2px]">
-            <p className="font-bold">{name}</p>
-            <p className="text-white/50">{category.name}</p>
-            { description && <p>{description}</p> }
-            {
-                links && <UList
-                    items={links}
-                    itemHandler={({ text, url }) => <Link 
-                        prefetch={false} 
-                        href={url}
-                        className="font-semibold text-gray-500"
-                    >{text}</Link>}
-                />
-            }
+        <div className="space-y-4">
+            <div className="space-y-[2px]">
+                <p className="font-bold">{name}</p>
+                <p className="text-white/50">{owner.name}</p>
+            </div>
+            <div>
+                <Button>Follow</Button>
+            </div>
         </div>
+        <TabLinks user={id} />
     </div>
 )

@@ -2,7 +2,7 @@ import { API } from "@/utils/constants"
 import { fetcher } from "@/utils/functions"
 import useSWRInfinite from "swr/infinite"
 
-export default (path, initialSize) => {
+export default (path, initialSize = 1) => {
     
     const url = `${API}${path}/`
     

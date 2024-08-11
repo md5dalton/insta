@@ -1,40 +1,19 @@
+"use client"
 import ProfilePhoto from "@/components/elements/ProfilePhoto"
 import Stats from "./Stats"
 import Button from "@/components/elements/Button"
 import TabLinks from "./TabLinks"
+import useFetch from "@/hooks/useFetch"
+import Info from "./Info"
 
-export default async ({ children, params: {username} }) => {
+export default ({ children, params: {username} }) => {
 
-    const name = "Thobymbhele"
-    const stats = [
-        {"name": "posts", value: 147},
-        {"name": "followers", value: "347K"},
-        {"name": "following", value: "2"}
-    ]
+    const { data, isLoading, error } = useFetch(`/user/${username}`)
 
-    return (
+    return isLoading ? <p>loading</p> : error ? <p>error</p> : 
+        (
         <div className="pt-4">
-            <div className="p-4 space-y-4">
-                <div className="flex items-center gap-10">
-                    <ProfilePhoto
-                        url={false}
-                        src={"/profile.jpg"}
-                        alt=""
-                        size="L"
-                        hasNew={true}
-                    />
-                    <Stats values={stats} />
-                </div>
-                <div className="space-y-4">
-                    <div>
-                        <p className="font-bold">{name}</p>
-                    </div>
-                    <div>
-                        <Button>Follow</Button>
-                    </div>
-                </div>
-                <TabLinks user={username} />
-            </div>
+            <Info {...data.user} />
             <div>{children}</div>
         </div>
     )
