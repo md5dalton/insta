@@ -1,9 +1,10 @@
 import { setVideo } from "@/signals/video"
+import { getAPIstream, getAPIthumb } from "@/utils/functions"
 import Link from "next/link"
 import { useRef } from "react"
 import { Waypoint } from "react-waypoint"
 
-export default ({ reel: { id } }) => {
+export default ({ id }) => {
 
     const video = useRef()
     
@@ -16,11 +17,11 @@ export default ({ reel: { id } }) => {
             <Link href={`/reel/${id}`}>
                 <video
                     ref={video}
-                    poster={`/api/thumb/${id}`}
+                    poster={getAPIthumb(id)}
                     // autoPlay
                     muted
                     className="row-span-full col-span-full"
-                    src={`/api/stream/${id}`}
+                    src={getAPIstream(id)}
                 />
                 <div className="overlay row-span-full col-span-full flex flex-col">
                     <div className="controls grow"></div>
