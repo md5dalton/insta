@@ -33,10 +33,17 @@ export const shuffle = ( arr ) => {
 
 export const array_column = (array, column) => array.map(item => item[column])
 
-export const getImageUrl = str => {
 
-    const [ type, id ] = str.split(":")
+export const getAPIurl = path => API + path
 
-    return API + (type == "m" ? `/media/${id}` : `/thumb/${id}`)
+export const getAPIthumb = slug => getAPIurl(`/thumb/${slug}`)
+export const getAPImedia = slug => getAPIurl(`/media/${slug}`)
+export const getAPIstream = slug => getAPIurl(`/stream/${slug}`)
+
+export const getImageUrl = slug => {
+
+    const [ type, id ] = slug.split(":")
+
+    return type == "m" ? getAPImedia(id) : getAPIthumb(id)
 
 }
