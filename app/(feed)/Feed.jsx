@@ -1,33 +1,34 @@
-// import { getPosts } from "@/actions/feed"
-// import LoadMore from "./LoadMore"
-
-// export default async () => {
-    
-//     const data = await getPosts()
-
-//     return (
-//         <ul className="grid gap-8">
-//             {data}
-//             <LoadMore />
-//         </ul>
-
-//     )
-// }
-
 "use client"
 import Post from "@/components/Post/Post"
-import InfiniteList from "../InfiniteList"
+import { useInView } from "react-intersection-observer"
+import useMedia from "@/hooks/useMedia"
+import { feed } from "@/signals/sizes"
+import { useEffect } from "react"
+import UList from "@/components/UList"
 
 export default () => {
 
-    const mediaHandler = media => <Post {...media} /> 
+    const { ref, inView } = useInView()
 
+    const { 
+        media, size,
+        loadmore
+    } = useMedia("/feed", feed.value)
+    
+    useEffect(() => {
+        if (inView) loadmore()
+    }, [inView])
+
+    useEffect(() => {
+        if (size > feed.value) feed.value = size + 1
+    }, [size])
+    
     return (
-        <InfiniteList
-            className=""
-            path={"/feed"}
-            threshold={1000}
-            mediaHandler={mediaHandler}
-        />
+        <UList
+            items={media}
+            itemHandler={item => <Post {...item} />}
+        >
+            <div ref={ref} />
+        </UList>
     )
 }
