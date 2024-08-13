@@ -1,3 +1,4 @@
+import { getAPImedia } from "@/utils/functions"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -6,9 +7,9 @@ export default ({ id, width, height }) => (
         <Image
             alt=""
             className="row-span-full col-span-full"
-            src={`/api/media/${id}`}
-            width={width}
-            height={height}
+            src={getAPImedia(id)}
+            width={500}
+            height={500}
             // style={{
             //     height: "100%",
             //     // width: "100%",
