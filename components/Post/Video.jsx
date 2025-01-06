@@ -2,18 +2,18 @@ import { setVideo } from "@/signals/video"
 import { getAPIstream, getAPIthumb } from "@/utils/functions"
 import Link from "next/link"
 import { useRef } from "react"
-import { Waypoint } from "react-waypoint"
+// import { Waypoint } from "react-waypoint"
 
 export default ({ id }) => {
 
     const video = useRef()
     
     return (
-        <Waypoint
-            scrollableAncestor="window"
-            onEnter={()=>setVideo(video.current)}
-            onLeave={()=>console.log("leave", id)}
-        >
+        // <Waypoint
+        //     scrollableAncestor="window"
+        //     onEnter={()=>setVideo(video.current)}
+        //     onLeave={()=>console.log("leave", id)}
+        // >
             <Link href={`/reel/${id}`}>
                 <video
                     ref={video}
@@ -28,6 +28,6 @@ export default ({ id }) => {
                     {/* <Indicators items={images} current={index} /> */}
                 </div>
             </Link>
-        </Waypoint>
+        // {/* </Waypoint> */}
     )
 }
