@@ -5,9 +5,9 @@ import Header from "./Header"
 export default () => (
     <div className="home">
         <Header />
-        <div className="py-3 line-b">
+        {/* <div className="py-3 line-b"> */}
             {/* <Stories /> */}
-        </div>
+        {/* </div> */}
         <Feed path="/feed" />
     </div>
 )
