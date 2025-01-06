@@ -1,6 +1,6 @@
 import "../styles/globals.css"
 import Footer from "./Footer"
-
+import { Providers } from "./Providers"
 
 export const metadata = {
   title: "Letlapa",
@@ -11,10 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html className="bg-black">
       <body className="text-white text-sm pb-16">
-        <main>
+        <Providers>
           {children}
-        </main>
-        <Footer />
+        </Providers>
       </body>
     </html>
   )
