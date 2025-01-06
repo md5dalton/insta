@@ -9,45 +9,66 @@ import { addPosts, posts } from "@/signals/feed"
 import { useAppDispatch, useAppSelector, useAppStore } from "@/hooks/useStore"
 import { getPosts } from "@/store/feed/feedSlice"
 import { getFeedPosts, useGetFeedPosts, useGetFeedPostsQuery, useListFeedPostsQuery } from "@/services/api"
+import { useSelector } from "react-redux"
+import { addData, setPage, setScrollPostion } from "@/store/pagination/paginationSlice"
+import Button from "@/components/elements/Button"
 
 export default () => {
 
-    const [page, setPage] = useState(1)
-
-    const { data, error, isLoading } = useListFeedPostsQuery(page)
-    const feed = useAppSelector(state => state)
-    // const dispatch = useAppDispatch()
-    // const store = useAppStore()
-
-    const { ref, inView } = useInView()
-
-    // const { 
-    //     media, size,
-    //     loadmore
-    // } = useMedia("/feed")
+    const dispatch = useAppDispatch() 
     
-    // addPosts(size, media)
+    const { currentPage, cumulativeData, scrollPosition } = useSelector(state => state.pagination)
 
-    // posts.value = media
-
-    console.log(feed)
+    const { data, error, isLoading } = useListFeedPostsQuery(currentPage)
 
     useEffect(() => {
-        if (inView) setPage(page+1)
-    }, [inView])
+        
+        if (data?.media) dispatch(addData(data.media))
+        
+    }, [data, dispatch])
+
+    const handlePageChange = newPage => dispatch(setPage(newPage))
+    
+    // const { ref, inView } = useInView()
 
     // useEffect(() => {
-    //     if (size > feed.value) feed.value = size + 1
-    // }, [size])
-    
+    //     if (inView) handlePageChange(currentPage+1)
+    // }, [inView])
+
+    // const [s, setS] = useState(window.scrollY)
+    useEffect(() => {
+        console.log(scrollPosition)
+        // window.scrollTo(0, scrollPosition)
+    }, [scrollPosition])
+
+    useEffect(() => {
+        
+        const handleScroll = () => dispatch(setScrollPostion(window.scrollY))
+
+        window.addEventListener("scroll", handleScroll)
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+            // console.log("feed unmount", scrollPosition)
+        }
+    }, [])
+    // useEffect(() => {
+        
+    //     console.log(s)
+
+    // }, [s])
+
     return (
         error ? <p>error</p> :
         isLoading ? <p>loading</p> :
         <UList
-            items={data.media}
+            items={cumulativeData}
             itemHandler={item => <Post {...item} />}
         >
-            <div ref={ref} />
+            <Button
+                onClick={() => handlePageChange(currentPage+1)}
+                className="border-[1px] py-2 px-4 mx-auto my-4" >load more</Button>
+            {/* <div ref={ref} /> */}
         </UList>
     )
 }
