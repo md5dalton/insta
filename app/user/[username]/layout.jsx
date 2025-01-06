@@ -6,8 +6,10 @@ import TabLinks from "./TabLinks"
 import useFetch from "@/hooks/useFetch"
 import Info from "./Info"
 
-export default ({ children, params: {username} }) => {
+export default async ({ children, params }) => {
 
+    const { username } = await params
+    
     const { data, isLoading, error } = useFetch(`/user/${username}`)
 
     return isLoading ? <p>loading</p> : error ? <p>{error.message}</p> : 
