@@ -1,22 +1,9 @@
-"use client"
-import ProfilePhoto from "@/components/elements/ProfilePhoto"
-import Stats from "./Stats"
-import Button from "@/components/elements/Button"
-import TabLinks from "./TabLinks"
-import useFetch from "@/hooks/useFetch"
-import Info from "./Info"
+import User from "./User"
 
 export default async ({ children, params }) => {
 
     const { username } = await params
-    
-    const { data, isLoading, error } = useFetch(`/user/${username}`)
 
-    return isLoading ? <p>loading</p> : error ? <p>{error.message}</p> : 
-        (
-        <div className="pt-4">
-            <Info {...data.user} />
-            <div>{children}</div>
-        </div>
-    )
+    return <User username={username}>{children}</User>
+
 }
