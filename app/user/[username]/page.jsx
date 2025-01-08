@@ -1,3 +1,9 @@
 import { redirect } from "next/navigation"
 
-export default ({ params: { username } }) => redirect(`/user/${username}/reels`)
+export default async ({ params }) => {
+
+    const { username } = await params
+
+    // redirect(`/user/${username}/reels`)
+
+}
