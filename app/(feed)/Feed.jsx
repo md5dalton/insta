@@ -3,7 +3,7 @@ import Post from "@/components/Post/Post"
 import { useInView } from "react-intersection-observer"
 import useMedia from "@/hooks/useMedia"
 import { feed } from "@/signals/sizes"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import UList from "@/components/UList"
 import { addPosts, posts } from "@/signals/feed"
 import { useAppDispatch, useAppSelector, useAppStore } from "@/hooks/useStore"
@@ -12,9 +12,13 @@ import { getFeedPosts, useGetFeedPosts, useGetFeedPostsQuery, useListFeedPostsQu
 import { useSelector } from "react-redux"
 import { addData, setPage, setScrollPostion } from "@/store/pagination/paginationSlice"
 import Button from "@/components/elements/Button"
+import { debounce } from "lodash"
 
 export default () => {
 
+    
+    const indicator = useRef(Math.random())
+    
     const dispatch = useAppDispatch() 
     
     const { currentPage, cumulativeData, scrollPosition } = useSelector(state => state.pagination)
@@ -23,9 +27,9 @@ export default () => {
 
     useEffect(() => {
         
-        if (data?.media) dispatch(addData(data.media))
-        
-    }, [data, dispatch])
+        if (data?.media ) dispatch(addData(data.media))
+        console.log(currentPage)
+    }, [data, dispatch, currentPage])
 
     const handlePageChange = newPage => dispatch(setPage(newPage))
     
@@ -35,17 +39,22 @@ export default () => {
     //     if (inView) handlePageChange(currentPage+1)
     // }, [inView])
 
-    // const [s, setS] = useState(window.scrollY)
     useEffect(() => {
-        console.log(scrollPosition)
-        // window.scrollTo(0, scrollPosition)
-    }, [scrollPosition])
+        // console.log(scrollPosition, indicator.current)
+        window.scrollTo(0, scrollPosition)
+    }, [indicator])
+    // useEffect(() => {
+    //     console.log(scrollPosition)
+    //     // window.scrollTo(0, scrollPosition)
+    // }, [scrollPosition])
 
     useEffect(() => {
         
-        const handleScroll = () => dispatch(setScrollPostion(window.scrollY))
+        const handleScroll = debounce(() => dispatch(setScrollPostion(window.scrollY)))
 
         window.addEventListener("scroll", handleScroll)
+        // console.log("feed mount", scrollPosition, indicator)
+        console.log(cumulativeData)
 
         return () => {
             window.removeEventListener("scroll", handleScroll)
