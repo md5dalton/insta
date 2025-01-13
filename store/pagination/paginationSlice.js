@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     currentPage: 1,
     scrollPosition: 0,
-    cumulativeData: [],
+    cumulativeData: {},
 }
 
 const paginationSlice = createSlice({
@@ -12,9 +12,14 @@ const paginationSlice = createSlice({
     initialState,
     reducers: {
         addData (state, action) {
-            const ids = array_column(state.cumulativeData, "id")
+
+            const { page, data } = action.payload
+
+            state.cumulativeData[page] = data
+
+            // const ids = array_column(state.cumulativeData, "id")
             
-            state.cumulativeData = [...state.cumulativeData, ...action.payload.filter(({ id }) => !ids.includes(id))]
+            // state.cumulativeData = [...state.cumulativeData, ...action.payload.filter(({ id }) => !ids.includes(id))]
         },
         setPage (state, action) {
             state.currentPage = action.payload
