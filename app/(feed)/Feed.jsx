@@ -1,24 +1,16 @@
 "use client"
 import Post from "@/components/Post/Post"
 import { useInView } from "react-intersection-observer"
-import useMedia from "@/hooks/useMedia"
-import { feed } from "@/signals/sizes"
-import { useEffect, useRef, useState } from "react"
+import { useEffect } from "react"
 import UList from "@/components/UList"
-import { addPosts, posts } from "@/signals/feed"
-import { useAppDispatch, useAppSelector, useAppStore } from "@/hooks/useStore"
-import { getPosts } from "@/store/feed/feedSlice"
-import { getFeedPosts, useGetFeedPosts, useGetFeedPostsQuery, useListFeedPostsQuery } from "@/services/api"
+import { useAppDispatch } from "@/hooks/useStore"
+import { useListFeedPostsQuery } from "@/services/api"
 import { useSelector } from "react-redux"
-import { addData, setPage, setScrollPostion } from "@/store/pagination/paginationSlice"
+import { addData, setPage } from "@/store/pagination/paginationSlice"
 import Button from "@/components/elements/Button"
-import { debounce } from "lodash"
 
 export default () => {
 
-    
-    const indicator = useRef(Math.random())
-    
     const dispatch = useAppDispatch() 
     
     const { currentPage, cumulativeData, scrollPosition } = useSelector(state => state.pagination)
@@ -27,8 +19,8 @@ export default () => {
 
     useEffect(() => {
         
-        if (data?.media ) dispatch(addData(data.media))
-        console.log(currentPage)
+        if (data?.media ) dispatch(addData({page: currentPage, data: data.media}))
+
     }, [data, dispatch, currentPage])
 
     const handlePageChange = newPage => dispatch(setPage(newPage))
@@ -39,44 +31,40 @@ export default () => {
     //     if (inView) handlePageChange(currentPage+1)
     // }, [inView])
 
-    useEffect(() => {
+    // useEffect(() => {
         // console.log(scrollPosition, indicator.current)
-        window.scrollTo(0, scrollPosition)
-    }, [indicator])
+        // window.scrollTo(0, scrollPosition)
+    // }, [indicator])
+
     // useEffect(() => {
     //     console.log(scrollPosition)
     //     // window.scrollTo(0, scrollPosition)
     // }, [scrollPosition])
 
-    useEffect(() => {
-        
-        const handleScroll = debounce(() => dispatch(setScrollPostion(window.scrollY)))
-
-        window.addEventListener("scroll", handleScroll)
-        // console.log("feed mount", scrollPosition, indicator)
-        console.log(cumulativeData)
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
-            // console.log("feed unmount", scrollPosition)
-        }
-    }, [])
     // useEffect(() => {
         
-    //     console.log(s)
+    //     const handleScroll = debounce(() => dispatch(setScrollPostion(window.scrollY)))
 
-    // }, [s])
+    //     window.addEventListener("scroll", handleScroll)
+
+    //     return () => {
+    //         window.removeEventListener("scroll", handleScroll)
+    //     }
+    // }, [])
+
+    console.log(cumulativeData)
 
     return (
         error ? <p>error</p> :
         isLoading ? <p>loading</p> :
         <UList
-            items={cumulativeData}
+            items={Object.values(cumulativeData).flat()}
             itemHandler={item => <Post {...item} />}
         >
             <Button
                 onClick={() => handlePageChange(currentPage+1)}
-                className="border-[1px] py-2 px-4 mx-auto my-4" >load more</Button>
+                className="border-[1px] py-2 px-4 mx-auto my-4"
+            >load more</Button>
             {/* <div ref={ref} /> */}
         </UList>
     )
