@@ -8,9 +8,9 @@ const baseQuery = fetchBaseQuery({
 
     prepareHeaders: async headers => {
 
-        const session = await getSession()
+        // const session = await getSession()
       
-        if (session && session.token) headers.set('Authorization', `Bearer ${session.token}`)
+        // if (session && session.token) headers.set('Authorization', `Bearer ${session.token}`)
       
         return headers
     
