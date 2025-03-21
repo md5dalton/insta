@@ -11,15 +11,15 @@ export async function middleware(req) {
 
     if (pathname.startsWith(loginPath) || pathname.startsWith("/_next")) return NextResponse.next()
     
-    if (!token) {
+    // if (!token) {
 
-        const loginUrl = new URL(loginPath, req.url)
+    //     const loginUrl = new URL(loginPath, req.url)
         
-        loginUrl.searchParams.set("callbackUrl", req.url)
+    //     loginUrl.searchParams.set("callbackUrl", req.url)
         
-        return NextResponse.redirect(loginUrl)
+    //     return NextResponse.redirect(loginUrl)
 
-    }
+    // }
 
     return NextResponse.next()
 
