@@ -52,7 +52,7 @@ export default () => {
     //     }
     // }, [])
 
-    console.log(cumulativeData)
+    // console.log(cumulativeData)
 
     return (
         error ? <p>error</p> :
